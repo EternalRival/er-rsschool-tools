@@ -82,7 +82,6 @@ class App {
     const result = this.scoreResult.textContent;
 
     const isAppealable = desired - result >= max * 0.1;
-    console.log(`${desired} - ${result} >= ${max} * 0.1 === ${isAppealable}`);
 
     this.scoreAppealable.textContent = `${isAppealable ? 'Можно' : 'Нельзя'} подать апелляцию`;
     this.scoreAppealable.style = `color:${isAppealable ? 'green' : 'red'}`;
