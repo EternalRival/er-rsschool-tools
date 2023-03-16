@@ -45,11 +45,15 @@ class App {
       el.addEventListener('input', (e) => {
         const { value, max } = e.target;
         e.target.value = (+value <= +max ? value : max).slice(-3);
-        this.renderAppealable();
       });
     });
 
-    max.addEventListener('input', (e) => [desired, ...inputs].forEach((el) => (el.max = e.target.value || 0)));
+    max.addEventListener('input', (e) => {
+      [desired, ...inputs].forEach((el) => (el.max = e.target.value || 0));
+      this.renderAppealable();
+    });
+
+    desired.addEventListener('input', () => this.renderAppealable());
 
     inputs.forEach((el) => {
       el.addEventListener('input', () => {
@@ -59,6 +63,7 @@ class App {
           .sort((a, b) => b - a)
           .slice(0, 3);
         this.renderScoreResult(scoreList);
+        this.renderAppealable();
       });
     });
 
@@ -77,6 +82,7 @@ class App {
     const result = this.scoreResult.textContent;
 
     const isAppealable = desired - result >= max * 0.1;
+    console.log(`${desired} - ${result} >= ${max} * 0.1 === ${isAppealable}`);
 
     this.scoreAppealable.textContent = `${isAppealable ? 'Можно' : 'Нельзя'} подать апелляцию`;
     this.scoreAppealable.style = `color:${isAppealable ? 'green' : 'red'}`;
