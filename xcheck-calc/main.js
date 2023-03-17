@@ -89,7 +89,7 @@ class App {
 
   static calcResultScore(arr) {
     const sum = arr.reduce((sum, score) => sum + score, 0);
-    return Math.floor(sum / arr.length);
+    return Math.round(sum / arr.length);
   }
 
   static createElement(className, tag) {
