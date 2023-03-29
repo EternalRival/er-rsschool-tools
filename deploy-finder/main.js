@@ -53,7 +53,10 @@ class App {
 
     links.forEach(async (a) => {
       const status = await App.getStatus(a.textContent);
-      if (status === 200) a.href = a.textContent;
+      if (status === 200) {
+        a.href = a.textContent;
+        a.target = '_blank';
+      }
     });
   }
 
