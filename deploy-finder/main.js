@@ -52,8 +52,8 @@ class App {
     });
 
     links.forEach(async (a) => {
-      const status = await App.getStatus(v);
-      if (status === 200) a.href = v;
+      const status = await App.getStatus(a.textContent);
+      if (status === 200) a.href = a.textContent;
     });
   }
 
