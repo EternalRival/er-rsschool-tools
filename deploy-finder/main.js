@@ -42,14 +42,18 @@ class App {
     ].map((v) => templateLink + v);
 
     el.replaceChildren();
-    [templateLink, ...options].forEach(async (v) => {
+    const links = [templateLink, ...options].map((v) => {
       const li = App.createElement('result-item', 'li');
       const a = App.createElement('link', 'a');
-      const status = await App.getStatus(v);
-      if (status === 200) a.href = v;
       el.append(li);
       li.append(a);
       a.append(v);
+      return a;
+    });
+
+    links.forEach(async (a) => {
+      const status = await App.getStatus(v);
+      if (status === 200) a.href = v;
     });
   }
 
