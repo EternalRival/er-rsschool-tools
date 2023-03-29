@@ -1,0 +1,2 @@
+- [xCheck-calc](https://eternalrival.github.io/rsschool-stuff/xcheck-calc)
+- [deploy-finder](https://eternalrival.github.io/rsschool-stuff/deploy-finder)
