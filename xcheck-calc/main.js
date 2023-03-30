@@ -83,7 +83,7 @@ class App {
 
     const isAppealable = desired - result >= max * 0.1;
 
-    this.scoreAppealable.textContent = `${isAppealable ? 'Можно' : 'Нельзя'} подать апелляцию`;
+    this.scoreAppealable.textContent = `Апелляция ${isAppealable ? '' : 'не'}возможна`;
     this.scoreAppealable.style = `color:${isAppealable ? 'green' : 'red'}`;
   }
 
