@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const onSubmit = () => { }
+const onSubmit = () => {}
 </script>
 
 <template>
@@ -9,27 +9,27 @@ const onSubmit = () => { }
         <legend class="font-medium text-lg">Введите данные</legend>
         <label>
           Максимум:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
         <label>
           Желаемое:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
         <label>
           Reviewer 1:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
         <label>
           Reviewer 2:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
         <label>
           Reviewer 3:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
         <label>
           Reviewer 4:
-          <input type="number" placeholder="<empty>">
+          <input type="number" placeholder="<empty>" />
         </label>
       </fieldset>
       <p></p>

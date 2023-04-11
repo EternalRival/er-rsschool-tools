@@ -41,7 +41,7 @@ main {
 }
 
 input {
-  @apply px-2 py-1 border border-solid border-color4 outline-none invalid:border-color-invalid;
+  @apply px-2 py-1 border border-solid border-color4 outline-none invalid:border-color-invalid focus:shadow;
 }
 
 button[type='submit'] {

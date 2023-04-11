@@ -1,5 +1,30 @@
 <script setup lang="ts">
-const onSubmit = () => console.log('kek');
+import { computed } from 'vue'
+import { ref } from 'vue'
+
+const getStatus = async (url: string) => (await fetch(url)).status
+
+const [nickname, course, task] = [ref(''), ref(''), ref('')]
+const urlOptions = computed(() => {
+  const urlNickname = nickname.value.toLowerCase()
+  const urlCourse = course.value.toUpperCase()
+  const urlTask = task.value.toLowerCase()
+  const urlTemplate = `https://rolling-scopes-school.github.io/${urlNickname}-${urlCourse}/${urlTask}`
+  return [
+    '',
+    '/index.html',
+    '/main.html',
+    '/pages/index.html',
+    '/pages/main.html',
+    '/pages/main',
+    '/page/main/index.html',
+    '/pages/main/main.html'
+  ].map((option) => urlTemplate + option)
+})
+
+const onSubmit = () => {
+  console.log(urlOptions.value)
+}
 </script>
 
 <template>
@@ -9,15 +34,15 @@ const onSubmit = () => console.log('kek');
         <legend class="font-medium text-lg">Введите данные</legend>
         <label>
           Github nickname:
-          <input>
+          <input v-model="nickname" />
         </label>
         <label>
           Course:
-          <input>
+          <input v-model="course" />
         </label>
         <label>
           Taskname:
-          <input>
+          <input v-model="task" />
         </label>
         <button type="submit">Search</button>
       </fieldset>
