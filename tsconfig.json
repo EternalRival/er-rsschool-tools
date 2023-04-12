@@ -5,6 +5,8 @@
     "module": "ESNext",
     "lib": ["ESNext", "DOM"],
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "types": ["vite/client"]
   }
 }
