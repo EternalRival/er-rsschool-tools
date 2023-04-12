@@ -1112,6 +1112,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-prettier@npm:^8.8.0":
+  version: 8.8.0
+  resolution: "eslint-config-prettier@npm:8.8.0"
+  peerDependencies:
+    eslint: ">=7.0.0"
+  bin:
+    eslint-config-prettier: bin/cli.js
+  checksum: 1e94c3882c4d5e41e1dcfa2c368dbccbfe3134f6ac7d40101644d3bfbe3eb2f2ffac757f3145910b5eacf20c0e85e02b91293d3126d770cbf3dc390b3564681c
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^7.1.1":
   version: 7.1.1
   resolution: "eslint-scope@npm:7.1.1"
@@ -2424,6 +2435,7 @@ __metadata:
     "@vitejs/plugin-vue": ^4.1.0
     autoprefixer: ^10.4.14
     eslint: ^8.38.0
+    eslint-config-prettier: ^8.8.0
     postcss: ^8.4.21
     prettier: ^2.8.7
     tailwindcss: ^3.3.1
