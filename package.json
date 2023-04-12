@@ -6,8 +6,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint",
-    "format": "prettier --write ."
+    "lint": "eslint .",
+    "format": "prettier --write src"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.1.0",

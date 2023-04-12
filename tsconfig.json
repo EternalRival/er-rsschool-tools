@@ -1,1 +1,10 @@
-{ "compilerOptions": { "moduleResolution": "node" } }
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "strict": true,
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "noEmit": true,
+    "skipLibCheck": true
+  }
+}
