@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const getStatus = async (url: string) => (await fetch(url)).status
 
@@ -10,16 +9,9 @@ const urlOptions = computed(() => {
   const urlCourse = course.value.toUpperCase()
   const urlTask = task.value.toLowerCase()
   const urlTemplate = `https://rolling-scopes-school.github.io/${urlNickname}-${urlCourse}/${urlTask}`
-  return [
-    '',
-    '/index.html',
-    '/main.html',
-    '/pages/index.html',
-    '/pages/main.html',
-    '/pages/main',
-    '/page/main/index.html',
-    '/pages/main/main.html'
-  ].map((option) => urlTemplate + option)
+  const possibleDirs = ['', '/pages', '/pages/main']
+  const possibleFiles = ['', '/index.html', '/main.html']
+  return possibleDirs.flatMap((dir: string) => possibleFiles.map((file) => `${urlTemplate}${dir}${file}`))
 })
 
 const onSubmit = () => {
