@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue';
   import { debounce } from 'lodash';
+  import axios from 'axios';
 
   const [nickname, course, task] = ['', '', ''].map((v) => ref(v));
   const urlOptions = computed(() => {
@@ -16,7 +17,7 @@
   const urlOptionsElements = ref<HTMLLIElement[]>([]);
   const setHrefs = debounce(() => {
     urlOptionsElements.value.forEach(async ({ firstElementChild: anchor }) => {
-      if (anchor instanceof HTMLAnchorElement && (await fetch(anchor.text)).status === 200) {
+      if (anchor instanceof HTMLAnchorElement && (await axios.get(anchor.text))) {
         anchor.href = anchor.text;
       }
     });
