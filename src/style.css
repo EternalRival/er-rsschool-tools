@@ -14,13 +14,13 @@ body {
   @apply bg-color2;
 }
 body::-webkit-scrollbar {
-  @apply w-2 h-2;
+  @apply h-2 w-2;
 }
 body::-webkit-scrollbar-track {
   @apply bg-color4;
 }
 body::-webkit-scrollbar-thumb {
-  @apply bg-color2 shadow-inner shadow-color4 rounded-2xl;
+  @apply rounded-2xl bg-color2 shadow-inner shadow-color4;
 }
 
 #app {
@@ -37,13 +37,37 @@ nav a {
 }
 
 main {
-  @apply p-4 grow flex flex-col justify-center items-center;
+  @apply flex grow flex-col items-center justify-center p-4;
 }
 
 input {
-  @apply px-2 py-1 border border-solid border-color4 outline-none invalid:border-color-invalid focus:shadow;
+  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-color-invalid focus:shadow;
 }
 
 button[type='submit'] {
-  @apply p-1 border border-color4 bg-color3 transition-all hover:shadow hover:shadow-color4 active:bg-color4;
+  @apply border border-color4 bg-color3 p-1 transition-all hover:shadow hover:shadow-color4 active:bg-color4;
+}
+
+@layer base {
+  label {
+    @apply flex items-center justify-between;
+  }
+
+  input {
+    @apply ml-2;
+  }
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  form {
+    @apply bg-color1 p-2 shadow shadow-color4;
+  }
+  fieldset {
+    @apply flex flex-col items-end gap-1.5 p-2;
+  }
+  legend {
+    @apply text-lg font-medium;
+  }
 }

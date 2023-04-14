@@ -1,37 +1,35 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
-  import { ref } from 'vue';
+  import { computed, ref, watch } from 'vue';
+  import { debounce } from 'lodash';
 
-  const getStatus = async (url: string) => (await fetch(url)).status;
-
-  const [nickname, course, task] = [ref(''), ref(''), ref('')];
+  const [nickname, course, task] = ['', '', ''].map((v) => ref(v));
   const urlOptions = computed(() => {
     const urlNickname = nickname.value.toLowerCase();
     const urlCourse = course.value.toUpperCase();
     const urlTask = task.value.toLowerCase();
     const urlTemplate = `https://rolling-scopes-school.github.io/${urlNickname}-${urlCourse}/${urlTask}`;
-    return [
-      '',
-      '/index.html',
-      '/main.html',
-      '/pages/index.html',
-      '/pages/main.html',
-      '/pages/main',
-      '/page/main/index.html',
-      '/pages/main/main.html',
-    ].map((option) => urlTemplate + option);
+    const possibleDirs = ['', '/pages', '/pages/main'];
+    const possibleFiles = ['', '/index.html', '/main.html'];
+    return possibleDirs.flatMap((dir: string) => possibleFiles.map((file) => `${urlTemplate}${dir}${file}`));
   });
 
-  const onSubmit = () => {
-    console.log(urlOptions.value);
-  };
+  const urlOptionsElements = ref<HTMLLIElement[]>([]);
+  const setHrefs = debounce(() => {
+    urlOptionsElements.value.forEach(async ({ firstElementChild: anchor }) => {
+      if (anchor instanceof HTMLAnchorElement && (await fetch(anchor.text)).status === 200) {
+        anchor.href = anchor.text;
+      }
+    });
+  }, 1000);
+
+  watch(urlOptionsElements.value, () => setHrefs(), { flush: 'post' });
 </script>
 
 <template>
   <main>
-    <form class="p-2 bg-color1 shadow shadow-color4" @submit.prevent="onSubmit">
-      <fieldset class="p-2 flex flex-col items-end gap-1.5">
-        <legend class="font-medium text-lg">Введите данные</legend>
+    <form>
+      <fieldset>
+        <legend>Введите данные</legend>
         <label>
           Github nickname:
           <input v-model="nickname" />
@@ -44,18 +42,19 @@
           Taskname:
           <input v-model="task" />
         </label>
-        <button type="submit">Search</button>
       </fieldset>
     </form>
+    <ul v-if="nickname && course && task" class="p-2">
+      <li v-for="option in urlOptions" :key="option" ref="urlOptionsElements">
+        <a>{{ option }}</a>
+      </li>
+    </ul>
   </main>
 </template>
 
 <style scoped>
-  label {
-    @apply flex justify-between items-center;
-  }
-
-  input {
-    @apply ml-2;
+  a:any-link {
+    color: blue;
+    text-decoration: underline;
   }
 </style>
