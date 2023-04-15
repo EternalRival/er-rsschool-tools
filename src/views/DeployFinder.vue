@@ -1,29 +1,35 @@
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue';
+  import { computed, reactive, watch } from 'vue';
   import { debounce } from 'lodash';
   import axios from 'axios';
+  import { StorageService } from '../service/StorageService';
 
-  const [nickname, course, task] = ['', '', ''].map((v) => ref(v));
+  const storageInputs = StorageService.get<Record<string, string>>('deploy-finder__inputs');
+  const inputs = reactive({
+    nickname: storageInputs?.nickname ?? '',
+    course: storageInputs?.course ?? '',
+    task: storageInputs?.task ?? '',
+  });
   const urlOptions = computed(() => {
-    const urlNickname = nickname.value.toLowerCase();
-    const urlCourse = course.value.toUpperCase();
-    const urlTask = task.value.toLowerCase();
+    const urlNickname = inputs.nickname.toLowerCase();
+    const urlCourse = inputs.course.toUpperCase();
+    const urlTask = inputs.task.toLowerCase();
     const urlTemplate = `https://rolling-scopes-school.github.io/${urlNickname}-${urlCourse}/${urlTask}`;
     const possibleDirs = ['', '/pages', '/pages/main'];
     const possibleFiles = ['', '/index.html', '/main.html'];
     return possibleDirs.flatMap((dir: string) => possibleFiles.map((file) => `${urlTemplate}${dir}${file}`));
   });
 
-  const urlOptionsElements = ref<HTMLLIElement[]>([]);
+  const urlOptionsElements: HTMLLIElement[] = reactive([]);
   const setHrefs = debounce(() => {
-    urlOptionsElements.value.forEach(async ({ firstElementChild: anchor }) => {
-      if (anchor instanceof HTMLAnchorElement && (await axios.get(anchor.text))) {
-        anchor.href = anchor.text;
-      }
+    urlOptionsElements.forEach(async ({ firstElementChild: anchor }) => {
+      if (anchor instanceof HTMLAnchorElement && (await axios.get(anchor.text))) anchor.href = anchor.text;
     });
   }, 1000);
+  watch(urlOptionsElements, setHrefs, { flush: 'post' });
 
-  watch(urlOptionsElements.value, () => setHrefs(), { flush: 'post' });
+  const setValues = debounce(() => StorageService.set('deploy-finder__inputs', inputs), 1000);
+  watch(inputs, setValues);
 </script>
 
 <template>
@@ -33,19 +39,19 @@
         <legend>Введите данные</legend>
         <label>
           Github nickname:
-          <input v-model="nickname" />
+          <input v-model="inputs.nickname" />
         </label>
         <label>
           Course:
-          <input v-model="course" />
+          <input v-model="inputs.course" />
         </label>
         <label>
           Taskname:
-          <input v-model="task" />
+          <input v-model="inputs.task" />
         </label>
       </fieldset>
     </form>
-    <ul v-if="nickname && course && task" class="p-2">
+    <ul v-if="inputs.nickname && inputs.course && inputs.task" class="p-2">
       <li v-for="option in urlOptions" :key="option" ref="urlOptionsElements">
         <a>{{ option }}</a>
       </li>
