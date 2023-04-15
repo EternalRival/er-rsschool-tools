@@ -33,7 +33,11 @@ header {
   box-shadow: 0 0 10px -5px;
 }
 nav a {
-  @apply transition-colors hover:bg-color3;
+  @apply transition-colors hover:bg-color3 hover:bg-opacity-60;
+}
+nav a.router-link-active,
+nav a.router-link-exact-active {
+  @apply bg-color3;
 }
 
 main {
