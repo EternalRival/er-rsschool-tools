@@ -1,5 +1,7 @@
+export const prefix = '[rsschool-stuff]';
+
 export class StorageService {
-  static prefix = '[rsschool-stuff]';
+  static prefix = prefix;
 
   static set<T>(key: string, value: T) {
     localStorage[this.prefix + key] = JSON.stringify({ value });

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-  import { computed, reactive, ref } from 'vue';
+  import { computed, ref } from 'vue';
   const [max, desired] = [ref('100'), ref('0')];
-  const reviewers = reactive(['', '', '', '']);
+  const reviewers = ref(['', '', '', '']);
   const score = computed(() => {
-    const list = reviewers
+    const list = reviewers.value
       .filter((v) => v !== '')
       .map((v) => +v)
       .sort((a, b) => b - a)
