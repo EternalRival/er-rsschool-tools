@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
+import { defineConfig, UserConfigExport } from 'vite';
 import vue from '@vitejs/plugin-vue';
 
-/** @type {import('vite').UserConfig} */
-export default defineConfig({ plugins: [vue()], base: '/rsschool-stuff/' });
+const config: UserConfigExport = defineConfig({ plugins: [vue()], base: '/rsschool-stuff/' });
+export default config;
