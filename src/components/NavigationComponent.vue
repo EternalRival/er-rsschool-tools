@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  const routes = ref({ '/xcheck-calc': 'XCheckCalc Page', '/deploy-finder': 'DeployFinder Page' });
+  const routes = ref({ '/xcheck-calc': 'XCheckCalc', '/deploy-finder': 'DeployFinder' });
 </script>
 
 <template>
