@@ -15,7 +15,9 @@
 
   const setHrefs = (list: HTMLLIElement[]) => {
     list.forEach(async ({ firstElementChild: anchor }) => {
-      if (anchor instanceof HTMLAnchorElement && (await fetch(anchor.text)).ok) anchor.href = anchor.text;
+      anchor instanceof HTMLAnchorElement &&
+        (await fetch(anchor.text)).ok &&
+        Object.assign(anchor, { href: anchor.text, target: '_blank' });
     });
   };
   watchDebounced(urlOptionsElements.value, setHrefs, { debounce: 1000 });
