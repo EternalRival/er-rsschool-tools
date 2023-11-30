@@ -7,8 +7,8 @@
   const urlOptions = computed(() => {
     const { nickname, course, task } = inputs.value;
     const template = `https://rolling-scopes-school.github.io/${nickname.toLowerCase()}-${course.toUpperCase()}/${task.toLowerCase()}`;
-    const dirs = ['', '/pages', '/pages/main'];
-    const files = ['', '/main.html'];
+    const dirs = ['', '/pages', '/pages/main', '/pages/home'];
+    const files = ['', '/home.html', '/main.html'];
     return dirs.flatMap((dir: string) => files.map((file) => `${template}${dir}${file}`));
   });
   const urlOptionsElements: Ref<HTMLLIElement[]> = ref([]);
