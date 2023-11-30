@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue';
-  const [max, desired] = [ref('100'), ref('0')];
+  const [max, selfcheck] = [ref('100'), ref('0')];
   const reviewers = ref(['', '', '', '']);
   const score = computed(() => {
     const list = reviewers.value
@@ -10,7 +10,7 @@
       .slice(0, 3);
     return Math.round(list.reduce((sum, score) => score + sum, 0) / list.length) || 0;
   });
-  const appeal = computed(() => +desired.value - score.value >= +max.value * 0.1);
+  const appeal = computed(() => +selfcheck.value - score.value >= +max.value * 0.1);
 
   const handleLimits = (e: Event) =>
     e.target instanceof HTMLInputElement && e.target.value !== '' ? `${Math.min(+e.target.value, +e.target.max)}` : '';
@@ -22,7 +22,7 @@
       <fieldset>
         <legend>Введите данные</legend>
         <label>
-          Максимум:
+          Max Score:
           <input
             :value="max"
             class="w-20"
@@ -33,15 +33,15 @@
             @input="(max = handleLimits($event)), $forceUpdate()" />
         </label>
         <label>
-          Желаемое:
+          Self-check:
           <input
-            :value="desired"
+            :value="selfcheck"
             class="w-20"
             type="number"
             placeholder="<empty>"
             min="0"
             :max="max"
-            @input="(desired = handleLimits($event)), $forceUpdate()" />
+            @input="(selfcheck = handleLimits($event)), $forceUpdate()" />
         </label>
         <label v-for="(_, index) in reviewers" :key="index">
           Reviewer {{ index + 1 }}:
