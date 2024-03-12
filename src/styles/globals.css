@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-color4;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply rounded-2xl bg-color2 shadow-inner shadow-color4;
+}

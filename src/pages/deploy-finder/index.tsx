@@ -1,5 +1,5 @@
 import type { FC } from 'react';
 
-const Page: FC = () => <h1>Page2</h1>;
+const Page: FC = () => <h1>DeployFinder</h1>;
 
 export default Page;
