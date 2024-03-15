@@ -6,7 +6,7 @@ import type { FC, ReactNode } from 'react';
 
 type Props = { children: ReactNode };
 
-const roboto = Roboto({ weight: ['400'], subsets: ['latin', 'cyrillic'] });
+const roboto = Roboto({ weight: ['400', '500'], subsets: ['latin', 'cyrillic'] });
 
 const siteTitle = 'RSSchool Tools';
 
