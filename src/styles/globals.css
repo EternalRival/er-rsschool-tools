@@ -17,3 +17,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   @apply rounded-2xl bg-color2 shadow-inner shadow-color4;
 }
+
+input[type='text'] {
+  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-color-invalid focus:shadow;
+}
+
+label {
+  @apply p-2;
+}
