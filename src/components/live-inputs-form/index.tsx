@@ -22,12 +22,13 @@ export const LiveInputsForm: FC<Props> = ({ legendText, inputList, handleSubmit 
       legendText={legendText}
       handleSubmit={handleSubmit}
     >
-      {inputList.map(({ label, name, value }) => (
+      {inputList.map(({ className, label, name, value }) => (
         <Fragment key={name}>
           <label htmlFor={name}>{label}</label>
           <input
             id={name}
             name={name}
+            className={className}
             type="text"
             onInput={handleInput}
             defaultValue={value}

@@ -4,6 +4,7 @@ export const formFieldPropsSchema = z.object({
   label: z.string(),
   name: z.string(),
   value: z.string().optional(),
+  className: z.string().optional(),
 });
 
 export type FormFieldProps = z.infer<typeof formFieldPropsSchema>;

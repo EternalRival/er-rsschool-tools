@@ -1,22 +1,22 @@
 import { getFormDataObject } from '@/lib/get-form-data-object';
 import { useLocalStorage } from '@/lib/use-local-storage';
 import { parseNullable } from '@/shared/zod';
-import type { FC, FormEventHandler } from 'react';
+import { type FC, type FormEventHandler } from 'react';
 import { z } from 'zod';
 import { LiveInputsForm } from '../live-inputs-form';
 import type { FormFieldProps } from '../live-inputs-form/form-field-props.schema';
 
 const legendText = 'Введите данные';
 const inputList: FormFieldProps[] = [
-  { label: 'Github nickname:', name: 'nickname' },
-  { label: 'Course:', name: 'course' },
-  { label: 'Taskname:', name: 'task' },
+  { label: 'Github nickname:', name: 'nickname', className: 'lowercase' },
+  { label: 'Course:', name: 'course', className: 'uppercase' },
+  { label: 'Taskname:', name: 'task', className: 'lowercase' },
 ];
 
 const stateSchema = z.object({
-  nickname: z.string(),
-  course: z.string(),
-  task: z.string(),
+  nickname: z.string().toLowerCase(),
+  course: z.string().toUpperCase(),
+  task: z.string().toLowerCase(),
 });
 const parseState = parseNullable(stateSchema);
 const parseKey = parseNullable(stateSchema.keyof());
