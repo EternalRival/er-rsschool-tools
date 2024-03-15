@@ -6,8 +6,6 @@ export const debounce: Debounce = (callback, ms) => {
 
   return (...args) => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => {
-      callback(...args);
-    }, ms);
+    timeout = setTimeout(() => void callback(...args), ms);
   };
 };
