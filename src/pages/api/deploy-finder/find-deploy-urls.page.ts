@@ -12,7 +12,9 @@ const handler: NextApiHandler<ApiResponse> = async ({ query }, res) => {
     const baseDeployUrl = `${BASE_URL}${nickname}-${course}/${task}`;
 
     const suggestedUrlResponses = SUGGESTED_DIRS.flatMap((dir) =>
-      SUGGESTED_FILES.map((file) => fetch(`${baseDeployUrl}${dir}${file}`).then(({ ok, url }) => ok && url))
+      SUGGESTED_FILES.map((file) =>
+        fetch(`${baseDeployUrl}${dir}${file}`, { next: { revalidate: 300 } }).then(({ ok, url }) => ok && url)
+      )
     );
 
     const awaitedResponses = await Promise.all(suggestedUrlResponses);
