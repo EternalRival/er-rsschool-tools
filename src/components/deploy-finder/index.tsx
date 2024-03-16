@@ -1,58 +1,60 @@
 import { getFormDataObject } from '@/lib/get-form-data-object';
 import { useLocalStorage } from '@/lib/use-local-storage';
 import { parseNullable } from '@/shared/zod';
-import { type FC, type FormEventHandler } from 'react';
-import { z } from 'zod';
+import type { FC, FormEventHandler } from 'react';
 import { LiveInputsForm } from '../live-inputs-form';
 import type { FormFieldProps } from '../live-inputs-form/form-field-props.schema';
+import type { DeployFinderInputs } from './deploy-finder-inputs.schema';
+import { deployFinderInputsSchema } from './deploy-finder-inputs.schema';
+import { DeployUrls } from './deploy-urls';
 
 const legendText = 'Введите данные';
-const inputList: FormFieldProps[] = [
+const inputsFormProps: FormFieldProps[] = [
   { label: 'Github nickname:', name: 'nickname', className: 'lowercase' },
   { label: 'Course:', name: 'course', className: 'uppercase' },
   { label: 'Taskname:', name: 'task', className: 'lowercase' },
 ];
 
-const stateSchema = z.object({
-  nickname: z.string().toLowerCase(),
-  course: z.string().toUpperCase(),
-  task: z.string().toLowerCase(),
-});
-const parseState = parseNullable(stateSchema);
-const parseKey = parseNullable(stateSchema.keyof());
-type State = z.infer<typeof stateSchema>;
+const parseInputValues = parseNullable(deployFinderInputsSchema);
+const parseInputValuesKey = parseNullable(deployFinderInputsSchema.keyof());
 
-const getListWithValuesFromState = (list: FormFieldProps[], state: State): FormFieldProps[] =>
-  list.map((props) => {
-    const key = parseKey(props.name);
+const mergeInputsFormPropsWithValues = (list: FormFieldProps[], state: DeployFinderInputs | null): FormFieldProps[] => {
+  if (state === null) {
+    return list;
+  }
+
+  return list.map((props) => {
+    const key = parseInputValuesKey(props.name);
     return key ? { ...props, value: state[key] } : props;
   });
+};
 
 export const DeployFinder: FC = () => {
-  const [state, setState] = useLocalStorage('deploy-finder');
+  const [inputValues, setInputValues] = useLocalStorage('deploy-finder');
 
-  const parsedState = parseState(state);
+  const typedInputValues = parseInputValues(inputValues);
 
-  const inputsData = parsedState ? getListWithValuesFromState(inputList, parsedState) : inputList;
+  const isCorrectURLsData = typedInputValues && Object.values(typedInputValues).every(Boolean);
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    const urlData = parseState(getFormDataObject(e.currentTarget));
+    const urlData = parseInputValues(getFormDataObject(e.currentTarget));
 
-    const isNotEmpty = urlData && Object.values(urlData).some(Boolean);
-
-    setState(isNotEmpty ? urlData : null);
+    if (urlData && Object.values(urlData).some(Boolean)) {
+      setInputValues(urlData);
+    } else {
+      setInputValues(null);
+    }
   };
 
   return (
     <>
       <LiveInputsForm
         legendText={legendText}
-        inputList={inputsData}
+        inputList={mergeInputsFormPropsWithValues(inputsFormProps, typedInputValues)}
         handleSubmit={handleFormSubmit}
       />
-
-      {parsedState && JSON.stringify(parsedState)}
+      {isCorrectURLsData && <DeployUrls {...typedInputValues} />}
     </>
   );
 };
