@@ -1,6 +1,7 @@
 import type { z } from 'zod';
 
 type ParseNullable = <T>(s: z.ZodType<T>, v?: unknown) => ((value: unknown) => Nullable<T>) | Nullable<T>;
+
 type ParseNullableOverloaded = {
   <T>(schema: z.ZodType<T>): (value: unknown) => Nullable<T>;
   <T>(schema: z.ZodType<T>, value: unknown): Nullable<T>;

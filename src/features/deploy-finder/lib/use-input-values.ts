@@ -1,7 +1,10 @@
-import { deployUrlPartsSchema, type DeployUrlParts } from '@/entities/deploy-urls';
+import { useMemo } from 'react';
+
+import { deployUrlPartsSchema } from '@/entities/deploy-urls';
 import { LocalStorageKey, useLocalStorage } from '@/shared/lib/local-storage';
 import { parseNullable } from '@/shared/lib/zod';
-import { useMemo } from 'react';
+
+import type { DeployUrlParts } from '@/entities/deploy-urls';
 
 const parseInputValues = parseNullable(deployUrlPartsSchema);
 

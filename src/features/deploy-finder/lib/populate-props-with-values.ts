@@ -1,6 +1,8 @@
-import { deployUrlPartsSchema, type DeployUrlParts } from '@/entities/deploy-urls';
-import type { FormFieldProps } from '@/entities/live-inputs-form';
+import { deployUrlPartsSchema } from '@/entities/deploy-urls';
 import { parseNullable } from '@/shared/lib/zod';
+
+import type { DeployUrlParts } from '@/entities/deploy-urls';
+import type { FormFieldProps } from '@/entities/live-inputs-form';
 
 type PopulatePropsWithValues = (props: FormFieldProps[], values: Nullable<DeployUrlParts>) => FormFieldProps[];
 
@@ -13,6 +15,7 @@ export const populatePropsWithValues: PopulatePropsWithValues = (propsList, valu
 
   return propsList.map((props) => {
     const key = parseValuesKey(props.name);
+
     return key ? { ...props, value: values[key] } : props;
   });
 };

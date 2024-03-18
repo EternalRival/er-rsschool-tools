@@ -1,10 +1,13 @@
 import { clsx } from 'clsx';
 import { Roboto } from 'next/font/google';
 import Head from 'next/head';
-import type { FC, ReactNode } from 'react';
+
 import { NavBar } from '@/features/nav-bar';
 import { routes } from '@/shared/router';
+
 import { getFilteredNavRoutes } from '../lib/get-nav-routes';
+
+import type { FC, ReactNode } from 'react';
 
 type Props = { children: ReactNode };
 

@@ -34,7 +34,7 @@
     "lint": "npm run ci:lint -- --fix .",
     "format": "prettier -luw .",
     "stylelint": "npm run ci:stylelint -- --fix src/**/*.css",
-    "fix": "npm run format && npm run lint && npm run stylelint",
+    "fix": "npm run lint && npm run stylelint && npm run format",
     "commitlint": "commitlint --edit",
     "lint-staged": "lint-staged",
     "test": "echo \"Error: no test specified\"",
@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "19.1.0",
+    "@stylistic/eslint-plugin-ts": "1.7.0",
     "@types/node": "20.11.26",
     "@types/react": "18.2.64",
     "@types/react-dom": "18.2.21",

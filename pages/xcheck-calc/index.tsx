@@ -1,5 +1,7 @@
+import { XCheckCalcPage } from '@/pages/xcheck-calc';
+
 import type { FC } from 'react';
 
-const Page: FC = () => <h1>XCheckCalc</h1>;
+const Page: FC = () => <XCheckCalcPage />;
 
 export default Page;

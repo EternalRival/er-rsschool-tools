@@ -1,7 +1,9 @@
-import type { Json } from '@/shared/lib/zod';
 import { useEffect, useState } from 'react';
-import type { LocalStorageKey } from '../model/local-storage-key.enum';
+
 import { wrappedLS } from '../model/wrapped-ls';
+
+import type { Json } from '@/shared/lib/zod';
+import type { LocalStorageKey } from '../model/local-storage-key.enum';
 
 type UseLocalStorage = (key: LocalStorageKey) => [Json, (value: Json) => void];
 
@@ -14,6 +16,7 @@ export const useLocalStorage: UseLocalStorage = (key) => {
     } else {
       wrappedLS.set(key, value);
     }
+
     setState(value);
   };
 

@@ -1,7 +1,9 @@
-import type { SWRResponse } from 'swr';
 import useSWR from 'swr';
-import type { Json } from '@/shared/lib/zod';
+
 import { jsonSchema } from '@/shared/lib/zod';
+
+import type { SWRResponse } from 'swr';
+import type { Json } from '@/shared/lib/zod';
 
 const fetcher = (...args: Parameters<typeof fetch>): Promise<Json> =>
   fetch(...args)

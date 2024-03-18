@@ -1,6 +1,8 @@
-import type { Json } from '@/shared/lib/zod';
 import { parseNullable, stringToJsonSchema } from '@/shared/lib/zod';
+
 import { LocalStorageKey } from './local-storage-key.enum';
+
+import type { Json } from '@/shared/lib/zod';
 
 const wrapKey = (key: LocalStorageKey): string => `${LocalStorageKey.PREFIX}${key}`;
 

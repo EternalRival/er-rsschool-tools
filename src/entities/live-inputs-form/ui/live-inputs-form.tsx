@@ -1,7 +1,9 @@
-import type { FC, FormEventHandler } from 'react';
 import { Fragment } from 'react';
+
 import { debounce } from '@/shared/lib/debounce';
 import { StyledForm } from '@/shared/ui/styled-form';
+
+import type { FC, FormEventHandler } from 'react';
 import type { FormFieldProps } from '../model/form-field-props.schema';
 
 type Props = {

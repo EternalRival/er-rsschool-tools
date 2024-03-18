@@ -1,10 +1,12 @@
 import { DeployUrls } from '@/entities/deploy-urls';
 import { LiveInputsForm } from '@/entities/live-inputs-form';
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
-import type { FC } from 'react';
+
 import { populatePropsWithValues } from '../lib/populate-props-with-values';
 import { useInputValues } from '../lib/use-input-values';
 import { inputsFormProps } from '../model/inputs-form-props';
+
+import type { FC } from 'react';
 
 const formLegendText = 'Введите данные';
 

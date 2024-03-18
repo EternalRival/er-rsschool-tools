@@ -1,4 +1,5 @@
 import { Route } from './enums/route.enum';
+
 import type { RouteObject } from './types/route-object.type';
 
 export const routes: RouteObject[] = [

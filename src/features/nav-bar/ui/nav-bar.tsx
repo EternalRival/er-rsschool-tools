@@ -1,6 +1,7 @@
+import { NavLink } from './nav-link';
+
 import type { FC } from 'react';
 import type { RouteObject } from '@/shared/router';
-import { NavLink } from './nav-link';
 
 type Props = { routes: RouteObject[] };
 

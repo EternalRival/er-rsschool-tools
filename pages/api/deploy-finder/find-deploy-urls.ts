@@ -1,4 +1,3 @@
-import type { ApiResponse } from '@/shared/api/deploy-finder';
 import {
   REVALIDATE_IN_MINUTES,
   buildBaseDeployUrl,
@@ -7,6 +6,8 @@ import {
   parseOkUrl,
   requestSchema,
 } from '@/shared/api/deploy-finder';
+
+import type { ApiResponse } from '@/shared/api/deploy-finder';
 import type { NextApiHandler } from 'next';
 
 const handler: NextApiHandler<ApiResponse> = async ({ query }, res) => {

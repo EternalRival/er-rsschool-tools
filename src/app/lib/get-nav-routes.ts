@@ -1,4 +1,6 @@
-import { Route, type RouteObject } from '@/shared/router';
+import { Route } from '@/shared/router';
+
+import type { RouteObject } from '@/shared/router';
 
 type GetNavRoutes = (routes: RouteObject[]) => RouteObject[];
 

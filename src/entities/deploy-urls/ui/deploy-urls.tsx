@@ -1,8 +1,10 @@
-import type { FC } from 'react';
 import { Route } from '@/shared/router';
 import { useFetchJson } from '@/shared/lib/swr/use-fetch-json';
-import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
+
 import { parseDeployUrls } from '../lib/parse-deploy-urls';
+
+import type { FC } from 'react';
+import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
 
 export const DeployUrls: FC<DeployUrlParts> = (props) => {
   const apiUrl = `${Route.DEPLOY_FINDER_API}/find-deploy-urls`;
