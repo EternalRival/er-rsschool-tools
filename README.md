@@ -1,1 +1,1 @@
-# nextjs project
+# rsschool-tools
