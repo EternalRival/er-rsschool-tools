@@ -4,6 +4,9 @@ const config = {
     'airbnb',
     'airbnb/hooks',
     'airbnb-typescript',
+    'plugin:import/recommended',
+    'plugin:import/react',
+    'plugin:import/typescript',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'prettier',
@@ -13,7 +16,7 @@ const config = {
   parserOptions: {
     project: './tsconfig.json',
   },
-  plugins: ['@stylistic/ts'],
+  plugins: ['import', '@typescript-eslint', '@stylistic/ts'],
   rules: {
     'import/prefer-default-export': 'off',
     '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'never' }],
