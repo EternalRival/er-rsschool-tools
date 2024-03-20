@@ -4,39 +4,45 @@ import { debounce } from '@/shared/lib/debounce';
 import { StyledForm } from '@/shared/ui/styled-form';
 
 import type { FC, FormEventHandler } from 'react';
-import type { FormFieldProps } from '../model/form-field-props.schema';
+import type { FormFieldProps } from '../model/form-field-props.type';
 
 type Props = {
   legendText: string;
-  inputList: FormFieldProps[];
+  inputPropsList: FormFieldProps[];
   handleSubmit: FormEventHandler<HTMLFormElement>;
+  debounceMs?: number;
 };
 
-export const LiveInputsForm: FC<Props> = ({ legendText, inputList, handleSubmit }) => {
-  const handleInput = debounce<FormEventHandler<HTMLInputElement>>(({ target }) => {
+export const LiveInputsForm: FC<Props> = ({ legendText, inputPropsList, handleSubmit, debounceMs }) => {
+  const handleInputFn: FormEventHandler<HTMLInputElement> = ({ target }) => {
     if (target instanceof HTMLInputElement) {
       target.form?.requestSubmit();
     }
-  }, 1000);
+  };
+
+  const handleInput = debounceMs ? debounce(handleInputFn, debounceMs) : handleInputFn;
 
   return (
     <StyledForm
       legendText={legendText}
       handleSubmit={handleSubmit}
     >
-      {inputList.map(({ className, label, name, value }) => (
+      {inputPropsList.map(({ className, label, name, type = 'text', value }) => (
         <Fragment key={name}>
           <label htmlFor={name}>{label}</label>
           <input
             id={name}
             name={name}
             className={className}
-            type="text"
+            type={type}
             onInput={handleInput}
             defaultValue={value}
+            placeholder="<empty>"
           />
         </Fragment>
       ))}
     </StyledForm>
   );
 };
+
+LiveInputsForm.defaultProps = { debounceMs: 1000 };

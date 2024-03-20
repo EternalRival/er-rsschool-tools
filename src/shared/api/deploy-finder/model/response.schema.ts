@@ -12,4 +12,4 @@ export const responseSchema = z
     })
   );
 
-export type ApiResponse = z.infer<typeof responseSchema>;
+export type ApiResponse = z.input<typeof responseSchema>;

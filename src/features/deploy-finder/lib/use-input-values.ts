@@ -10,12 +10,12 @@ const parseInputValues = parseNullable(deployUrlPartsSchema);
 
 type SetInputValues = (inputValue: Nullable<DeployUrlParts>) => void;
 
-type UseInputValue = () => {
+type UseInputValues = () => {
   parseInputValues: typeof parseInputValues;
   setInputValues: SetInputValues;
 } & ({ isFilled: true; inputValues: DeployUrlParts } | { isFilled: false; inputValues: Nullable<DeployUrlParts> });
 
-export const useInputValues: UseInputValue = () => {
+export const useInputValues: UseInputValues = () => {
   const [rawInputValues, setRawInputValues] = useLocalStorage(LocalStorageKey.DEPLOY_FINDER);
 
   const setInputValues: SetInputValues = (value) =>

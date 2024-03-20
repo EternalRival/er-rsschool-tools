@@ -17,7 +17,7 @@ export const DeployFinder: FC = () => {
     <>
       <LiveInputsForm
         legendText={formLegendText}
-        inputList={populatePropsWithValues(inputsFormProps, inputValues)}
+        inputPropsList={populatePropsWithValues(inputsFormProps, inputValues)}
         handleSubmit={(e) => {
           e.preventDefault();
           setInputValues(parseInputValues(getFormDataObject(e.currentTarget)));

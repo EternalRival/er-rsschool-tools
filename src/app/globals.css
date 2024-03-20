@@ -18,8 +18,19 @@ body::-webkit-scrollbar-thumb {
   @apply rounded-2xl bg-color2 shadow-inner shadow-color4;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-color-invalid focus:shadow;
+}
+
+input[type='number'] {
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
 }
 
 label {

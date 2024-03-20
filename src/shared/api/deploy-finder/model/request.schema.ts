@@ -11,4 +11,4 @@ export const requestSchema = z.object({
   task: nonEmptyStringSchema,
 });
 
-export type ApiRequest = z.infer<typeof requestSchema>;
+export type ApiRequest = z.input<typeof requestSchema>;

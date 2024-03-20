@@ -1,0 +1,41 @@
+import { useMemo, useState } from 'react';
+
+import { sumArray } from '@/shared/lib/sum-array';
+
+import { getValuableScores } from './get-valuable-scores';
+
+import type { Dispatch, SetStateAction } from 'react';
+import type { InputValues } from '../model/input-values-schema';
+import type { Mode } from '../model/mode.schema';
+
+type UseHook = () => {
+  mode: Mode;
+  setMode: Dispatch<SetStateAction<Mode>>;
+  inputValues: InputValues;
+  setInputValues: Dispatch<SetStateAction<InputValues>>;
+  score: { isAppealable: boolean; average: number };
+};
+
+export const useXCheckCalc: UseHook = () => {
+  const [mode, setMode] = useState<Mode>('JSFE');
+  const [inputValues, setInputValues] = useState<InputValues>({ max: 100, self: 0 });
+
+  const score = useMemo(() => {
+    const { max, self, reviewer1, reviewer2, reviewer3, reviewer4 } = inputValues;
+    const scoreList = [reviewer1, reviewer2, reviewer3];
+
+    if (mode === 'JSFE') {
+      scoreList.push(reviewer4);
+    }
+
+    const sortedList = getValuableScores(scoreList);
+
+    const average = Math.round(sumArray(sortedList) / sortedList.length) || 0;
+
+    const isAppealable = self - average >= max * 0.1;
+
+    return { average, isAppealable };
+  }, [mode, inputValues]);
+
+  return { mode, setMode, inputValues, setInputValues, score };
+};

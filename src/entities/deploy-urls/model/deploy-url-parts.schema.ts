@@ -6,4 +6,4 @@ export const deployUrlPartsSchema = z.object({
   task: z.string().toLowerCase(),
 });
 
-export type DeployUrlParts = z.infer<typeof deployUrlPartsSchema>;
+export type DeployUrlParts = z.input<typeof deployUrlPartsSchema>;

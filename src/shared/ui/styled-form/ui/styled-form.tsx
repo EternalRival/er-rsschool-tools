@@ -3,7 +3,7 @@ import type { DOMAttributes, FC, ReactNode } from 'react';
 type Props = {
   children: ReactNode;
   legendText?: string;
-  handleSubmit: DOMAttributes<HTMLFormElement>['onSubmit'];
+  handleSubmit?: DOMAttributes<HTMLFormElement>['onSubmit'];
 };
 
 export const StyledForm: FC<Props> = ({ children, legendText, handleSubmit }) => (
@@ -18,4 +18,4 @@ export const StyledForm: FC<Props> = ({ children, legendText, handleSubmit }) =>
   </form>
 );
 
-StyledForm.defaultProps = { legendText: '' };
+StyledForm.defaultProps = { legendText: '', handleSubmit: undefined };
