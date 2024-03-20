@@ -10,7 +10,7 @@ const Page: FC = () => (
     <Head>
       <title>{`Deploy Finder | ${siteTitle}`}</title>
     </Head>
-    <DeployFinderPage />;
+    <DeployFinderPage />
   </>
 );
 

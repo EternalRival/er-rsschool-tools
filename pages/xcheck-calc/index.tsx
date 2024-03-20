@@ -10,7 +10,7 @@ const Page: FC = () => (
     <Head>
       <title>{`XCheck Calc | ${siteTitle}`}</title>
     </Head>
-    <XCheckCalcPage />;
+    <XCheckCalcPage />
   </>
 );
 
