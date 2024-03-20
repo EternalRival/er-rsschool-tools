@@ -17,7 +17,6 @@ export const XCheckCalc: FC = () => {
 
   return (
     <div>
-      {mode}
       <select
         className="mb-1 w-full bg-color1 p-2 text-end shadow shadow-color4 outline-none"
         onChange={(e) => {
