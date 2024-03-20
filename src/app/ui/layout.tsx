@@ -7,14 +7,13 @@ import { NavBar } from '@/features/nav-bar';
 import { routes } from '@/shared/router';
 
 import { getFilteredNavRoutes } from '../lib/get-nav-routes';
+import { metadata, siteTitle } from '../model/constants';
 
 import type { FC, ReactNode } from 'react';
 
 type Props = { children: ReactNode };
 
 const roboto = Roboto({ weight: ['400', '500'], subsets: ['latin', 'cyrillic'] });
-
-const siteTitle = 'RSSchool Tools';
 
 export const Layout: FC<Props> = ({ children }) => (
   <div className={clsx(roboto.className, 'flex min-h-screen bg-color2')}>
@@ -28,14 +27,13 @@ export const Layout: FC<Props> = ({ children }) => (
         rel="apple-touch-icon"
         href="/eternalrival.png"
       />
-      <meta
-        name="description"
-        content="Some utils from https://github.com/EternalRival"
-      />
-      <meta
-        name="og:title"
-        content={siteTitle}
-      />
+      {metadata.map(({ content, name }) => (
+        <meta
+          content={content}
+          name={name}
+          key={name}
+        />
+      ))}
       <title>{siteTitle}</title>
     </Head>
     <header className="flex shrink-0 items-center bg-color1 shadow-[0_0_10px_-5px]">
