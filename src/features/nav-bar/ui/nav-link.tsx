@@ -15,8 +15,8 @@ export const NavLink: FC<Props> = ({ href, name }) => {
     <Link
       href={href}
       className={clsx(
-        'block p-3 transition-colors hover:bg-color3 hover:bg-opacity-60 active:bg-color3',
-        isActivePath && 'bg-color3 hover:bg-opacity-100'
+        'block p-3 transition-colors',
+        isActivePath ? 'bg-color3' : 'hover:bg-color3 hover:bg-opacity-60 active:bg-color3'
       )}
     >
       {name}
