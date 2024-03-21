@@ -1,4 +1,4 @@
-import { parseNullable, stringToJsonSchema } from '@/shared/lib/zod';
+import { parseStringToJson } from '@/shared/lib/zod';
 
 import { LocalStorageKey } from './local-storage-key.enum';
 
@@ -13,7 +13,7 @@ type WrappedLS = {
 };
 
 export const wrappedLS: WrappedLS = {
-  get: (key) => parseNullable(stringToJsonSchema, window.localStorage.getItem(wrapKey(key))),
+  get: (key) => parseStringToJson(window.localStorage.getItem(wrapKey(key))),
   set: (key, data) => void window.localStorage.setItem(wrapKey(key), JSON.stringify(data)),
   remove: (key) => void window.localStorage.removeItem(wrapKey(key)),
 };

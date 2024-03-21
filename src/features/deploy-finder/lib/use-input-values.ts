@@ -1,35 +1,29 @@
 import { useMemo } from 'react';
 
-import { deployUrlPartsSchema } from '@/entities/deploy-urls';
 import { LocalStorageKey, useLocalStorage } from '@/shared/lib/local-storage';
-import { parseNullable } from '@/shared/lib/zod';
+import { parseDeployUrlParts } from '@/entities/deploy-urls';
 
 import type { DeployUrlParts } from '@/entities/deploy-urls';
 
-const parseInputValues = parseNullable(deployUrlPartsSchema);
-
-type SetInputValues = (inputValue: Nullable<DeployUrlParts>) => void;
+type SetInputValues = (inputValue: DeployUrlParts) => void;
 
 type UseInputValues = () => {
-  parseInputValues: typeof parseInputValues;
   setInputValues: SetInputValues;
-} & ({ isFilled: true; inputValues: DeployUrlParts } | { isFilled: false; inputValues: Nullable<DeployUrlParts> });
+  isFilled: boolean;
+  inputValues: DeployUrlParts;
+};
 
 export const useInputValues: UseInputValues = () => {
   const [rawInputValues, setRawInputValues] = useLocalStorage(LocalStorageKey.DEPLOY_FINDER);
 
   const setInputValues: SetInputValues = (value) =>
-    void setRawInputValues(value && Object.values(value).some(Boolean) ? value : null);
+    void setRawInputValues(Object.values(value).some(Boolean) ? value : null);
 
-  const inputValuesObject = useMemo(() => {
-    const inputValues = parseInputValues(rawInputValues);
+  const { inputValues, isFilled } = useMemo(() => {
+    const deployUrlParts = parseDeployUrlParts(rawInputValues);
 
-    if (inputValues === null) {
-      return { isFilled: false, inputValues: null } as const;
-    }
-
-    return { isFilled: Object.values(inputValues).every(Boolean), inputValues };
+    return { isFilled: Object.values(deployUrlParts).every(Boolean), inputValues: deployUrlParts };
   }, [rawInputValues]);
 
-  return { parseInputValues, setInputValues, ...inputValuesObject };
+  return { inputValues, isFilled, setInputValues };
 };

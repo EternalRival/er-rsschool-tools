@@ -5,10 +5,13 @@ const nonEmptyStringSchema = z
   .trim()
   .regex(/^[\w-]+$/);
 
-export const requestSchema = z.object({
+const requestSchema = z.object({
   nickname: nonEmptyStringSchema,
   course: nonEmptyStringSchema,
   task: nonEmptyStringSchema,
 });
 
-export type ApiRequest = z.input<typeof requestSchema>;
+export type ApiRequest = z.infer<typeof requestSchema>;
+
+export const parseApiRequest = (value: unknown): Nullable<ApiRequest> =>
+  requestSchema.nullable().catch(null).parse(value);
