@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { sumArray } from '@/shared/lib/sum-array';
 
+import { defaultInputValues } from '../model/constants';
 import { getValuableScores } from './get-valuable-scores';
 
 import type { Dispatch, SetStateAction } from 'react';
@@ -18,7 +19,7 @@ type UseHook = () => {
 
 export const useXCheckCalc: UseHook = () => {
   const [mode, setMode] = useState<Mode>('JSFE');
-  const [inputValues, setInputValues] = useState<InputValues>({ max: 100, self: 0 });
+  const [inputValues, setInputValues] = useState<InputValues>(defaultInputValues);
 
   const score = useMemo(() => {
     const { max, self, reviewer1, reviewer2, reviewer3, reviewer4 } = inputValues;

@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-const defaultInputValues = { max: 100, self: 0, reviewer1: '', reviewer2: '', reviewer3: '', reviewer4: '' };
+import { defaultInputValues } from './constants';
 
 const coerceNumberSchema = z.coerce.number();
-const reviewerScoreSchema = z.string().default('');
+const reviewerScoreSchema = z.string();
 
 const inputValuesSchema = z.object({
   max: coerceNumberSchema,
