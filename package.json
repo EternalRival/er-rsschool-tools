@@ -15,15 +15,15 @@
     "stylelint",
     "prettier"
   ],
-  "homepage": "https://github.com/eternalrival/rsschool-tools#readme",
+  "homepage": "https://github.com/eternalrival/er-rsschool-tools#readme",
   "bugs": {
-    "url": "https://github.com/eternalrival/rsschool-tools/issues",
+    "url": "https://github.com/eternalrival/er-rsschool-tools/issues",
     "email": "erdevelopment8@gmail.com"
   },
   "license": "MIT",
   "private": true,
   "author": "Eternal Rival <erdevelopment8@gmail.com> (https://github.com/eternalrival)",
-  "repository": "https://github.com/eternalrival/rsschool-tools",
+  "repository": "https://github.com/eternalrival/er-rsschool-tools",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
