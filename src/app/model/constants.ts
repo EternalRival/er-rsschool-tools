@@ -19,6 +19,6 @@ export const metadata = [
   },
   {
     name: 'og:image',
-    content: 'https://rsschool-tools.vercel.app/eternalrival.png',
+    content: 'https://er-rsschool-tools.vercel.app/eternalrival.png',
   },
 ];

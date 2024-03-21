@@ -1,3 +1,3 @@
 # rsschool-tools
 
-<https://rsschool-tools.vercel.app/>
+<https://er-rsschool-tools.vercel.app/>
