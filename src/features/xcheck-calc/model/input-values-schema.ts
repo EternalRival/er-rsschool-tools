@@ -1,9 +1,9 @@
 import { z } from 'zod';
 
-import { parseNullable } from '@/shared/lib/zod';
+import { defaultInputValues } from './constants';
 
 const coerceNumberSchema = z.coerce.number();
-const reviewerScoreSchema = z.string().default('');
+const reviewerScoreSchema = z.string();
 
 const inputValuesSchema = z.object({
   max: coerceNumberSchema,
@@ -14,7 +14,7 @@ const inputValuesSchema = z.object({
   reviewer4: reviewerScoreSchema,
 });
 
-export type InputValues = z.input<typeof inputValuesSchema>;
+export type InputValues = z.infer<typeof inputValuesSchema>;
 
 export const parseInputValues = (value: unknown): InputValues =>
-  parseNullable(inputValuesSchema, value) ?? { max: 100, self: 0 };
+  inputValuesSchema.catch(defaultInputValues).parse(value);

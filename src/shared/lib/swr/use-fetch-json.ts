@@ -1,14 +1,14 @@
 import useSWR from 'swr';
 
-import { jsonSchema } from '@/shared/lib/zod';
+import { parseJson } from '@/shared/lib/zod';
 
-import type { SWRResponse } from 'swr';
 import type { Json } from '@/shared/lib/zod';
+import type { SWRResponse } from 'swr';
 
 const fetcher = (...args: Parameters<typeof fetch>): Promise<Json> =>
   fetch(...args)
     .then((res) => res.json())
-    .then((json) => jsonSchema.parse(json));
+    .then(parseJson);
 
 export const useFetchJson = (key: string, params?: Record<string, string>): SWRResponse<Json> => {
   let endpoint = key;

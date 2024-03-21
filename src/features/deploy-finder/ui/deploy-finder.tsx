@@ -1,4 +1,4 @@
-import { DeployUrls } from '@/entities/deploy-urls';
+import { DeployUrls, parseDeployUrlParts } from '@/entities/deploy-urls';
 import { LiveInputsForm } from '@/entities/live-inputs-form';
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 
@@ -11,7 +11,7 @@ import type { FC } from 'react';
 const formLegendText = 'Deploy Finder';
 
 export const DeployFinder: FC = () => {
-  const { inputValues, isFilled, parseInputValues, setInputValues } = useInputValues();
+  const { inputValues, isFilled, setInputValues } = useInputValues();
 
   return (
     <>
@@ -20,10 +20,10 @@ export const DeployFinder: FC = () => {
         inputPropsList={populatePropsWithValues(inputsFormProps, inputValues)}
         handleSubmit={(e) => {
           e.preventDefault();
-          setInputValues(parseInputValues(getFormDataObject(e.currentTarget)));
+          setInputValues(parseDeployUrlParts(getFormDataObject(e.currentTarget)));
         }}
       />
-      {isFilled && <DeployUrls {...inputValues} />}
+      {isFilled ? <DeployUrls {...inputValues} /> : <p className="p-2">Enter your data</p>}
     </>
   );
 };

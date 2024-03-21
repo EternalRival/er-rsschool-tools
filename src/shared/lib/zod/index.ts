@@ -1,3 +1,3 @@
 export * from './schemas/json.schema';
 
-export * from './lib/parse-nullable';
+export * from './schemas/string-to-json.schema';

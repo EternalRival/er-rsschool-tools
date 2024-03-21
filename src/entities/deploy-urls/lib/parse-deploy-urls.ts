@@ -1,8 +1,7 @@
-import { responseSchema } from '@/shared/api/deploy-finder';
-import { parseNullable } from '@/shared/lib/zod';
+import { parseApiResponse } from '@/shared/api/deploy-finder';
 
 export const parseDeployUrls = (data: unknown): Nullable<string[]> => {
-  const res = parseNullable(responseSchema, data);
+  const response = parseApiResponse(data);
 
-  return res?.success ? res.deployUrls : null;
+  return response?.success ? response.data : null;
 };
