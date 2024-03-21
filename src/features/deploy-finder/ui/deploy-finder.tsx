@@ -8,7 +8,7 @@ import { inputsFormProps } from '../model/inputs-form-props';
 
 import type { FC } from 'react';
 
-const formLegendText = 'Введите данные';
+const formLegendText = 'Deploy Finder';
 
 export const DeployFinder: FC = () => {
   const { inputValues, isFilled, parseInputValues, setInputValues } = useInputValues();

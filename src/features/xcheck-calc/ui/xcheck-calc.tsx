@@ -10,7 +10,7 @@ import { parseInputValues } from '../model/input-values-schema';
 
 import type { FC, FormEvent } from 'react';
 
-const formLegendText = 'Введите данные';
+const formLegendText = 'xCheck Calc';
 
 export const XCheckCalc: FC = () => {
   const { mode, setMode, setInputValues, score } = useXCheckCalc();
