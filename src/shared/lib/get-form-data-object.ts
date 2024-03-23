@@ -1,2 +1,3 @@
-export const getFormDataObject = (form: HTMLFormElement): Record<string, FormDataEntryValue> =>
-  Object.fromEntries(new FormData(form).entries());
+export function getFormDataObject(form: HTMLFormElement): Record<string, FormDataEntryValue> {
+  return Object.fromEntries(new FormData(form).entries());
+}

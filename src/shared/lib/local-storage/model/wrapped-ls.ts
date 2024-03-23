@@ -4,7 +4,9 @@ import { LocalStorageKey } from './local-storage-key.enum';
 
 import type { Json } from '@/shared/lib/zod';
 
-const wrapKey = (key: LocalStorageKey): string => `${LocalStorageKey.PREFIX}${key}`;
+function wrapKey(key: LocalStorageKey): string {
+  return `${LocalStorageKey.PREFIX}${key}`;
+}
 
 type WrappedLS = {
   get: (key: LocalStorageKey) => Json;

@@ -1,5 +1,7 @@
 import { XCheckCalc } from '@/features/xcheck-calc';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
-export const XCheckCalcPage: FC = () => <XCheckCalc />;
+export function XCheckCalcPage(): ReactNode {
+  return <XCheckCalc />;
+}

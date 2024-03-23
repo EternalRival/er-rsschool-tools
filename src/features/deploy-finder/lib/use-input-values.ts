@@ -5,19 +5,18 @@ import { parseDeployUrlParts } from '@/entities/deploy-urls';
 
 import type { DeployUrlParts } from '@/entities/deploy-urls';
 
-type SetInputValues = (inputValue: DeployUrlParts) => void;
-
-type UseInputValues = () => {
-  setInputValues: SetInputValues;
+type UseInputValuesReturn = {
+  setInputValues: (inputValue: DeployUrlParts) => void;
   isFilled: boolean;
   inputValues: DeployUrlParts;
 };
 
-export const useInputValues: UseInputValues = () => {
+export function useInputValues(): UseInputValuesReturn {
   const [rawInputValues, setRawInputValues] = useLocalStorage(LocalStorageKey.DEPLOY_FINDER);
 
-  const setInputValues: SetInputValues = (value) =>
-    void setRawInputValues(Object.values(value).some(Boolean) ? value : null);
+  function setInputValues(value: DeployUrlParts): void {
+    setRawInputValues(Object.values(value).some(Boolean) ? value : null);
+  }
 
   const { inputValues, isFilled } = useMemo(() => {
     const deployUrlParts = parseDeployUrlParts(rawInputValues);
@@ -26,4 +25,4 @@ export const useInputValues: UseInputValues = () => {
   }, [rawInputValues]);
 
   return { inputValues, isFilled, setInputValues };
-};
+}

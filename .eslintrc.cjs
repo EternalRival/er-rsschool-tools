@@ -25,10 +25,7 @@ const config = {
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
-    'react/function-component-definition': [
-      'error',
-      { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
-    ],
+    'react/function-component-definition': ['error', { unnamedComponents: 'arrow-function' }],
     'curly': ['error', 'all'],
 
     'no-void': 'off',

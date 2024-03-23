@@ -3,15 +3,15 @@ import Head from 'next/head';
 import { siteTitle } from '@/app/model/constants';
 import { DeployFinderPage } from '@/pages/deploy-finder';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
-const Page: FC = () => (
-  <>
-    <Head>
-      <title>{`Deploy Finder | ${siteTitle}`}</title>
-    </Head>
-    <DeployFinderPage />
-  </>
-);
-
-export default Page;
+export default function Page(): ReactNode {
+  return (
+    <>
+      <Head>
+        <title>{`Deploy Finder | ${siteTitle}`}</title>
+      </Head>
+      <DeployFinderPage />
+    </>
+  );
+}

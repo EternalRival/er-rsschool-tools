@@ -3,15 +3,15 @@ import Head from 'next/head';
 import { siteTitle } from '@/app/model/constants';
 import { XCheckCalcPage } from '@/pages/xcheck-calc';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
-const Page: FC = () => (
-  <>
-    <Head>
-      <title>{`XCheck Calc | ${siteTitle}`}</title>
-    </Head>
-    <XCheckCalcPage />
-  </>
-);
-
-export default Page;
+export default function Page(): ReactNode {
+  return (
+    <>
+      <Head>
+        <title>{`XCheck Calc | ${siteTitle}`}</title>
+      </Head>
+      <XCheckCalcPage />
+    </>
+  );
+}

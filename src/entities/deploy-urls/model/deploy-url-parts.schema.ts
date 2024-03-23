@@ -10,8 +10,10 @@ const deployUrlPartsSchema = z.object({
 
 export type DeployUrlParts = z.infer<typeof deployUrlPartsSchema>;
 
-export const parseDeployUrlParts = (value: unknown): DeployUrlParts =>
-  deployUrlPartsSchema.catch(defaultDeployUrlParts).parse(value);
+export function parseDeployUrlParts(value: unknown): DeployUrlParts {
+  return deployUrlPartsSchema.catch(defaultDeployUrlParts).parse(value);
+}
 
-export const parseDeployUrlPartsKey = (value: unknown): Nullable<keyof DeployUrlParts> =>
-  deployUrlPartsSchema.keyof().nullable().catch(null).parse(value);
+export function parseDeployUrlPartsKey(value: unknown): Nullable<keyof DeployUrlParts> {
+  return deployUrlPartsSchema.keyof().nullable().catch(null).parse(value);
+}

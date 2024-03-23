@@ -1,12 +1,14 @@
-import { Route } from '@/shared/router';
 import { useFetchJson } from '@/shared/lib/swr/use-fetch-json';
+import { Route } from '@/shared/router';
 
 import { parseDeployUrls } from '../lib/parse-deploy-urls';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
 
-export const DeployUrls: FC<DeployUrlParts> = (props) => {
+type Props = Readonly<DeployUrlParts>;
+
+export function DeployUrls(props: Props): ReactNode {
   const apiUrl = `${Route.DEPLOY_FINDER_API}/find-deploy-urls`;
   const { data, isLoading } = useFetchJson(apiUrl, props);
 
@@ -34,4 +36,4 @@ export const DeployUrls: FC<DeployUrlParts> = (props) => {
   ) : (
     <span className="p-2">Not Found</span>
   );
-};
+}

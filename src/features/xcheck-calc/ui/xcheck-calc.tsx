@@ -4,15 +4,15 @@ import { LiveInputsForm } from '@/entities/live-inputs-form';
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 
 import { useXCheckCalc } from '../lib/use-x-check-calc';
+import { parseInputValues } from '../model/input-values-schema';
 import { inputsFormProps } from '../model/inputs-form-props';
 import { parseMode } from '../model/mode.schema';
-import { parseInputValues } from '../model/input-values-schema';
 
-import type { FC, FormEvent } from 'react';
+import type { FormEvent, ReactNode } from 'react';
 
 const formLegendText = 'xCheck Calc';
 
-export const XCheckCalc: FC = () => {
+export function XCheckCalc(): ReactNode {
   const { mode, setMode, setInputValues, score } = useXCheckCalc();
 
   return (
@@ -46,4 +46,4 @@ export const XCheckCalc: FC = () => {
       </p>
     </div>
   );
-};
+}

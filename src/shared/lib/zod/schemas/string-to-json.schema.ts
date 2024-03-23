@@ -12,4 +12,6 @@ const stringToJsonSchema = z.string().transform((str): Json => {
   }
 });
 
-export const parseStringToJson = (value: unknown): Json => stringToJsonSchema.catch(null).parse(value);
+export function parseStringToJson(value: unknown): Json {
+  return stringToJsonSchema.catch(null).parse(value);
+}

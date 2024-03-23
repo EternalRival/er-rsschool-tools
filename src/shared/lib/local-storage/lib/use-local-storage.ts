@@ -5,12 +5,10 @@ import { wrappedLS } from '../model/wrapped-ls';
 import type { Json } from '@/shared/lib/zod';
 import type { LocalStorageKey } from '../model/local-storage-key.enum';
 
-type UseLocalStorage = (key: LocalStorageKey) => [Json, (value: Json) => void];
-
-export const useLocalStorage: UseLocalStorage = (key) => {
+export function useLocalStorage(key: LocalStorageKey): [Json, (value: Json) => void] {
   const [state, setState] = useState<Json>(null);
 
-  const updateState = (value: Json): void => {
+  function updateState(value: Json): void {
     if (value === null) {
       wrappedLS.remove(key);
     } else {
@@ -18,11 +16,11 @@ export const useLocalStorage: UseLocalStorage = (key) => {
     }
 
     setState(value);
-  };
+  }
 
   useEffect(() => {
     setState(wrappedLS.get(key));
   }, [key]);
 
   return [state, updateState];
-};
+}
