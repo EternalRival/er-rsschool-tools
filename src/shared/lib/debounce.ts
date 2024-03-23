@@ -1,6 +1,6 @@
-type Callback<T extends Callback<T>> = (...args: Parameters<T>) => void;
+type Callbackk<T extends Callbackk<T>> = (...args: Parameters<T>) => void;
 
-export function debounce<T extends Callback<T>>(callback: T, ms: number): Callback<T> {
+export function debounce<T extends Callbackk<T>>(callback: T, ms: number): Callbackk<T> {
   let timeout: ReturnType<typeof setTimeout>;
 
   return (...args) => {
