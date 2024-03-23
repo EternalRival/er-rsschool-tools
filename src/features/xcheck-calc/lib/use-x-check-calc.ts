@@ -9,7 +9,7 @@ import type { Dispatch, SetStateAction } from 'react';
 import type { InputValues } from '../model/input-values-schema';
 import type { Mode } from '../model/mode.schema';
 
-type UseHook = () => {
+type UseHookReturn = {
   mode: Mode;
   setMode: Dispatch<SetStateAction<Mode>>;
   inputValues: InputValues;
@@ -17,7 +17,7 @@ type UseHook = () => {
   score: { isAppealable: boolean; average: number };
 };
 
-export const useXCheckCalc: UseHook = () => {
+export function useXCheckCalc(): UseHookReturn {
   const [mode, setMode] = useState<Mode>('JSFE');
   const [inputValues, setInputValues] = useState<InputValues>(defaultInputValues);
 
@@ -39,4 +39,4 @@ export const useXCheckCalc: UseHook = () => {
   }, [mode, inputValues]);
 
   return { mode, setMode, inputValues, setInputValues, score };
-};
+}

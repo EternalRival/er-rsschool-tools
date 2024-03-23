@@ -1,9 +1,9 @@
 import { findDeployUrls, parseApiRequest } from '@/shared/api/deploy-finder';
 
 import type { ApiResponse } from '@/shared/api/deploy-finder';
-import type { NextApiHandler } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-const handler: NextApiHandler<ApiResponse> = async (req, res) => {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ApiResponse>): Promise<void> {
   const parsedParams = parseApiRequest(req.query);
 
   if (parsedParams) {
@@ -12,6 +12,4 @@ const handler: NextApiHandler<ApiResponse> = async (req, res) => {
   } else {
     res.status(400).json({ success: false, error: 'Bad request' });
   }
-};
-
-export default handler;
+}

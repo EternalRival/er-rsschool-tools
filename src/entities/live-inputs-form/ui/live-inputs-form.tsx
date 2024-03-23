@@ -3,22 +3,22 @@ import { Fragment } from 'react';
 import { debounce } from '@/shared/lib/debounce';
 import { StyledForm } from '@/shared/ui/styled-form';
 
-import type { FC, FormEventHandler } from 'react';
+import type { FormEvent, FormEventHandler, ReactNode } from 'react';
 import type { FormFieldProps } from '../model/form-field-props.type';
 
-type Props = {
+type Props = Readonly<{
   legendText: string;
   inputPropsList: FormFieldProps[];
   handleSubmit: FormEventHandler<HTMLFormElement>;
   debounceMs?: number;
-};
+}>;
 
-export const LiveInputsForm: FC<Props> = ({ legendText, inputPropsList, handleSubmit, debounceMs }) => {
-  const handleInputFn: FormEventHandler<HTMLInputElement> = ({ target }) => {
+export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debounceMs }: Props): ReactNode {
+  function handleInputFn({ target }: FormEvent<HTMLInputElement>): void {
     if (target instanceof HTMLInputElement) {
       target.form?.requestSubmit();
     }
-  };
+  }
 
   const handleInput = debounceMs ? debounce(handleInputFn, debounceMs) : handleInputFn;
 
@@ -43,6 +43,4 @@ export const LiveInputsForm: FC<Props> = ({ legendText, inputPropsList, handleSu
       ))}
     </StyledForm>
   );
-};
-
-LiveInputsForm.defaultProps = { debounceMs: 1000 };
+}

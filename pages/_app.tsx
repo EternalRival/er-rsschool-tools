@@ -1,12 +1,13 @@
-import '@/app/globals.css';
 import { Layout } from '@/app';
+import '@/app/globals.css';
 
-import type { AppType } from 'next/app';
+import type { AppProps } from 'next/app';
+import type { ReactNode } from 'react';
 
-const App: AppType = ({ Component, pageProps }) => (
-  <Layout>
-    <Component {...pageProps} />
-  </Layout>
-);
-
-export default App;
+export default function App({ Component, pageProps }: AppProps): ReactNode {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
+}

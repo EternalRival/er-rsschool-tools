@@ -1,5 +1,5 @@
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
-const Home: FC = () => 'Welcome';
-
-export default Home;
+export default function Home(): ReactNode {
+  return 'Welcome';
+}

@@ -5,12 +5,13 @@ import { parseJson } from '@/shared/lib/zod';
 import type { Json } from '@/shared/lib/zod';
 import type { SWRResponse } from 'swr';
 
-const fetcher = (...args: Parameters<typeof fetch>): Promise<Json> =>
-  fetch(...args)
+function fetcher(...args: Parameters<typeof fetch>): Promise<Json> {
+  return fetch(...args)
     .then((res) => res.json())
     .then(parseJson);
+}
 
-export const useFetchJson = (key: string, params?: Record<string, string>): SWRResponse<Json> => {
+export function useFetchJson(key: string, params?: Record<string, string>): SWRResponse<Json> {
   let endpoint = key;
 
   if (params) {
@@ -18,4 +19,4 @@ export const useFetchJson = (key: string, params?: Record<string, string>): SWRR
   }
 
   return useSWR(endpoint, fetcher);
-};
+}

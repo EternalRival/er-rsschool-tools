@@ -6,11 +6,11 @@ import { populatePropsWithValues } from '../lib/populate-props-with-values';
 import { useInputValues } from '../lib/use-input-values';
 import { inputsFormProps } from '../model/inputs-form-props';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
 const formLegendText = 'Deploy Finder';
 
-export const DeployFinder: FC = () => {
+export function DeployFinder(): ReactNode {
   const { inputValues, isFilled, setInputValues } = useInputValues();
 
   return (
@@ -26,4 +26,4 @@ export const DeployFinder: FC = () => {
       {isFilled ? <DeployUrls {...inputValues} /> : <p className="p-2">Enter your data</p>}
     </>
   );
-};
+}

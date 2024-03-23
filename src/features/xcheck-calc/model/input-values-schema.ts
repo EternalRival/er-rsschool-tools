@@ -16,5 +16,6 @@ const inputValuesSchema = z.object({
 
 export type InputValues = z.infer<typeof inputValuesSchema>;
 
-export const parseInputValues = (value: unknown): InputValues =>
-  inputValuesSchema.catch(defaultInputValues).parse(value);
+export function parseInputValues(value: unknown): InputValues {
+  return inputValuesSchema.catch(defaultInputValues).parse(value);
+}

@@ -1,5 +1,7 @@
 import { DeployFinder } from '@/features/deploy-finder';
 
-import type { FC } from 'react';
+import type { ReactNode } from 'react';
 
-export const DeployFinderPage: FC = () => <DeployFinder />;
+export function DeployFinderPage(): ReactNode {
+  return <DeployFinder />;
+}

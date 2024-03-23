@@ -1,21 +1,25 @@
 import { NavLink } from './nav-link';
 
-import type { FC } from 'react';
 import type { RouteObject } from '@/shared/router';
+import type { ReactNode } from 'react';
 
-type Props = { routes: RouteObject[] };
+type Props = Readonly<{
+  routes: RouteObject[];
+}>;
 
-export const NavBar: FC<Props> = ({ routes }) => (
-  <nav>
-    <ul>
-      {routes.map(({ name, route }) => (
-        <li key={route}>
-          <NavLink
-            href={route}
-            name={name}
-          />
-        </li>
-      ))}
-    </ul>
-  </nav>
-);
+export function NavBar({ routes }: Props): ReactNode {
+  return (
+    <nav>
+      <ul>
+        {routes.map(({ name, route }) => (
+          <li key={route}>
+            <NavLink
+              href={route}
+              name={name}
+            />
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}

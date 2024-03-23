@@ -8,4 +8,6 @@ export type Json = Literal | { [key: string]: Json } | Json[];
 
 const jsonSchema: z.ZodType<Json> = z.lazy(() => z.union([literalSchema, z.array(jsonSchema), z.record(jsonSchema)]));
 
-export const parseJson = (value: unknown): Json => jsonSchema.catch(null).parse(value);
+export function parseJson(value: unknown): Json {
+  return jsonSchema.catch(null).parse(value);
+}
