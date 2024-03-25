@@ -4,7 +4,7 @@ import { LiveInputsForm } from '@/entities/live-inputs-form';
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 
 import { useXCheckCalc } from '../lib/use-x-check-calc';
-import { parseInputValues } from '../model/input-values-schema';
+import { parseFormData } from '../model/form-data.schema';
 import { inputsFormProps } from '../model/inputs-form-props';
 import { parseMode } from '../model/mode.schema';
 
@@ -32,7 +32,7 @@ export function XCheckCalc(): ReactNode {
         inputPropsList={mode === 'NodeJS' ? inputsFormProps.slice(0, -1) : inputsFormProps}
         handleSubmit={(e: FormEvent<HTMLFormElement>): void => {
           e.preventDefault();
-          setInputValues(parseInputValues(getFormDataObject(e.currentTarget)));
+          setInputValues(parseFormData(getFormDataObject(e.currentTarget)));
         }}
         debounceMs={0}
       />

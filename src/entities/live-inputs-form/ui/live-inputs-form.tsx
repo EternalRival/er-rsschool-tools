@@ -26,10 +26,16 @@ export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debou
     <StyledForm
       legendText={legendText}
       handleSubmit={handleSubmit}
+      className="grid grid-cols-[repeat(2,_max-content)]"
     >
       {inputPropsList.map(({ className, label, name, type = 'text', value }) => (
         <Fragment key={name}>
-          <label htmlFor={name}>{label}</label>
+          <label
+            htmlFor={name}
+            className="justify-self-end"
+          >
+            {label}
+          </label>
           <input
             id={name}
             name={name}

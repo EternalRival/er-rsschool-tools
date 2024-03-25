@@ -1,4 +1,4 @@
-export const defaultInputValues = {
+export const defaultFormData = {
   max: 100,
   self: 0,
   reviewer1: '',

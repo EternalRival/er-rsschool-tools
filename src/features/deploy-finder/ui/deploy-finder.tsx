@@ -3,7 +3,7 @@ import { LiveInputsForm } from '@/entities/live-inputs-form';
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 
 import { populatePropsWithValues } from '../lib/populate-props-with-values';
-import { useInputValues } from '../lib/use-input-values';
+import { useDeployFinder } from '../lib/use-deploy-finder';
 import { inputsFormProps } from '../model/inputs-form-props';
 
 import type { ReactNode } from 'react';
@@ -11,7 +11,7 @@ import type { ReactNode } from 'react';
 const formLegendText = 'Deploy Finder';
 
 export function DeployFinder(): ReactNode {
-  const { inputValues, isFilled, setInputValues } = useInputValues();
+  const { inputValues, isFilled, setInputValues } = useDeployFinder();
 
   return (
     <>
@@ -22,6 +22,7 @@ export function DeployFinder(): ReactNode {
           e.preventDefault();
           setInputValues(parseDeployUrlParts(getFormDataObject(e.currentTarget)));
         }}
+        debounceMs={1000}
       />
       {isFilled ? <DeployUrls {...inputValues} /> : <p className="p-2">Enter your data</p>}
     </>
