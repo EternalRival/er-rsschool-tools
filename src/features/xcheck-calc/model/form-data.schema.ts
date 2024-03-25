@@ -1,11 +1,11 @@
 import { z } from 'zod';
 
-import { defaultInputValues } from './constants';
+import { defaultFormData } from './constants';
 
 const coerceNumberSchema = z.coerce.number();
 const reviewerScoreSchema = z.string();
 
-const inputValuesSchema = z.object({
+const formDataSchema = z.object({
   max: coerceNumberSchema,
   self: coerceNumberSchema,
   reviewer1: reviewerScoreSchema,
@@ -14,8 +14,8 @@ const inputValuesSchema = z.object({
   reviewer4: reviewerScoreSchema,
 });
 
-export type InputValues = z.infer<typeof inputValuesSchema>;
+export type FormData = z.infer<typeof formDataSchema>;
 
-export function parseInputValues(value: unknown): InputValues {
-  return inputValuesSchema.catch(defaultInputValues).parse(value);
+export function parseFormData(value: unknown): FormData {
+  return formDataSchema.catch(defaultFormData).parse(value);
 }

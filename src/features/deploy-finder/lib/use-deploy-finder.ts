@@ -11,7 +11,7 @@ type UseInputValuesReturn = {
   inputValues: DeployUrlParts;
 };
 
-export function useInputValues(): UseInputValuesReturn {
+export function useDeployFinder(): UseInputValuesReturn {
   const [rawInputValues, setRawInputValues] = useLocalStorage(LocalStorageKey.DEPLOY_FINDER);
 
   function setInputValues(value: DeployUrlParts): void {

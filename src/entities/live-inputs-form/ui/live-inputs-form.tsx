@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import clsx from 'clsx';
 
 import { debounce } from '@/shared/lib/debounce';
 import { StyledForm } from '@/shared/ui/styled-form';
@@ -26,14 +27,20 @@ export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debou
     <StyledForm
       legendText={legendText}
       handleSubmit={handleSubmit}
+      className="grid grid-cols-[repeat(2,_max-content)]"
     >
       {inputPropsList.map(({ className, label, name, type = 'text', value }) => (
         <Fragment key={name}>
-          <label htmlFor={name}>{label}</label>
+          <label
+            htmlFor={name}
+            className="justify-self-end"
+          >
+            {label}
+          </label>
           <input
             id={name}
             name={name}
-            className={className}
+            className={clsx('', className)}
             type={type}
             onInput={handleInput}
             defaultValue={value}

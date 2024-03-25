@@ -1,1 +1,1 @@
-export * from './use-fetch-json';
+export * from './lib/use-fetch';

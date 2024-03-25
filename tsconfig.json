@@ -35,7 +35,8 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "plugins": [{ "name": "next" }]
+    "plugins": [{ "name": "next" }],
+    "types": ["vitest/globals"]
   },
   "include": [
     "next-env.d.ts",
@@ -43,7 +44,8 @@
     "**/*.tsx",
     "postcss.config.js",
     "prettier.config.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "vitest.config.mts"
   ],
   "exclude": ["node_modules"]
 }

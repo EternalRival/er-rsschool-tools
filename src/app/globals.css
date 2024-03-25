@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+:is(body, .scrollbar) {
   overflow: auto;
 }
 
-body::-webkit-scrollbar {
+:is(body, .scrollbar)::-webkit-scrollbar {
   @apply h-2 w-2;
 }
 
-body::-webkit-scrollbar-track {
-  @apply bg-color4;
+:is(body, .scrollbar)::-webkit-scrollbar-track {
+  @apply cursor-default bg-color2;
 }
 
-body::-webkit-scrollbar-thumb {
-  @apply rounded-2xl bg-color2 shadow-inner shadow-color4;
+:is(body, .scrollbar)::-webkit-scrollbar-thumb {
+  @apply cursor-default rounded-2xl bg-color4 shadow-inner shadow-color4;
 }
 
 input[type='text'],

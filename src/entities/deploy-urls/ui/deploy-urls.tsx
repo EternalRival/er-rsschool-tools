@@ -1,5 +1,5 @@
-import { useFetchJson } from '@/shared/lib/swr/use-fetch-json';
 import { Route } from '@/shared/router';
+import { useFetch } from '@/shared/lib/swr';
 
 import { parseDeployUrls } from '../lib/parse-deploy-urls';
 
@@ -8,9 +8,10 @@ import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
 
 type Props = Readonly<DeployUrlParts>;
 
-export function DeployUrls(props: Props): ReactNode {
-  const apiUrl = `${Route.DEPLOY_FINDER_API}/find-deploy-urls`;
-  const { data, isLoading } = useFetchJson(apiUrl, props);
+const apiUrl = `${Route.DEPLOY_FINDER_API}/find-deploy-urls`;
+
+export function DeployUrls(params: Props): ReactNode {
+  const { data, isLoading } = useFetch(apiUrl, { params });
 
   if (isLoading) {
     return <span className="p-2">Fetching…</span>;

@@ -27,6 +27,8 @@ const config = {
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
     'react/function-component-definition': ['error', { unnamedComponents: 'arrow-function' }],
     'curly': ['error', 'all'],
+    'import/no-cycle': 'error',
+    'jsx-a11y/label-has-associated-control': 'off', // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/966
 
     'no-void': 'off',
     '@typescript-eslint/no-meaningless-void-operator': 'off',
@@ -102,6 +104,14 @@ const config = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ['*.{spec,test}.{ts,tsx,js,jsx}'],
+      rules: {
+        'max-statements': ['error', 10, { ignoreTopLevelFunctions: true }],
+      },
+    },
+  ],
   noInlineConfig: true,
   reportUnusedDisableDirectives: true,
 };

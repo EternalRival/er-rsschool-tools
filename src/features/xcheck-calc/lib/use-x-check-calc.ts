@@ -2,24 +2,24 @@ import { useMemo, useState } from 'react';
 
 import { sumArray } from '@/shared/lib/sum-array';
 
-import { defaultInputValues } from '../model/constants';
+import { defaultFormData } from '../model/constants';
 import { getValuableScores } from './get-valuable-scores';
 
 import type { Dispatch, SetStateAction } from 'react';
-import type { InputValues } from '../model/input-values-schema';
+import type { FormData } from '../model/form-data.schema';
 import type { Mode } from '../model/mode.schema';
 
-type UseHookReturn = {
+type UseXCheckCalcReturn = {
   mode: Mode;
   setMode: Dispatch<SetStateAction<Mode>>;
-  inputValues: InputValues;
-  setInputValues: Dispatch<SetStateAction<InputValues>>;
+  inputValues: FormData;
+  setInputValues: Dispatch<SetStateAction<FormData>>;
   score: { isAppealable: boolean; average: number };
 };
 
-export function useXCheckCalc(): UseHookReturn {
+export function useXCheckCalc(): UseXCheckCalcReturn {
   const [mode, setMode] = useState<Mode>('JSFE');
-  const [inputValues, setInputValues] = useState<InputValues>(defaultInputValues);
+  const [inputValues, setInputValues] = useState<FormData>(defaultFormData);
 
   const score = useMemo(() => {
     const { max, self, reviewer1, reviewer2, reviewer3, reviewer4 } = inputValues;

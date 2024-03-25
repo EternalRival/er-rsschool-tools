@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const defaultDeployUrlParts = { nickname: '', course: '', task: '' };
+import { defaultDeployUrlParts } from './constants';
 
 const deployUrlPartsSchema = z.object({
   nickname: z.string().toLowerCase(),
