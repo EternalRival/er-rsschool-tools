@@ -22,6 +22,7 @@ export function DeployFinder(): ReactNode {
           e.preventDefault();
           setInputValues(parseDeployUrlParts(getFormDataObject(e.currentTarget)));
         }}
+        debounceMs={1000}
       />
       {isFilled ? <DeployUrls {...inputValues} /> : <p className="p-2">Enter your data</p>}
     </>
