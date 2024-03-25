@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-import clsx from 'clsx';
 
 import { debounce } from '@/shared/lib/debounce';
 import { StyledForm } from '@/shared/ui/styled-form';
@@ -40,7 +39,7 @@ export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debou
           <input
             id={name}
             name={name}
-            className={clsx('', className)}
+            className={className}
             type={type}
             onInput={handleInput}
             defaultValue={value}

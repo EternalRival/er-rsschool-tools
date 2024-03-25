@@ -1,3 +1,3 @@
 import type { FormData } from './form-data-schema';
 
-export const defaultFormData: FormData = { rawUrls: '' };
+export const defaultFormData: FormData = { rawUrls: '', idOffset: 2 };
