@@ -20,7 +20,7 @@
 
 input[type='text'],
 input[type='number'] {
-  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-color-invalid focus:shadow;
+  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-rose-500 focus:shadow;
 }
 
 input[type='number'] {

@@ -7,7 +7,7 @@
     "react",
     "typescript",
     "tailwind",
-    "husky ",
+    "husky",
     "commitlint",
     "lint-staged",
     "eslint",

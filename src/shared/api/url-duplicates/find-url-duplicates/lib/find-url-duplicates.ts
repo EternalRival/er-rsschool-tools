@@ -1,5 +1,3 @@
-type Dict<T = string> = Record<string, T>;
-
 type Input = {
   idOffset: number;
   rawUrls: string;

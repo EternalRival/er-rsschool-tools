@@ -39,7 +39,7 @@ export function XCheckCalc(): ReactNode {
       <p
         className={clsx(
           'mt-1 bg-color1 p-2 text-center',
-          score.isAppealable ? 'shadow-sm shadow-color-valid' : 'shadow shadow-color4'
+          score.isAppealable ? 'shadow-color-valid shadow-sm' : 'shadow shadow-color4'
         )}
       >
         {score.average}
