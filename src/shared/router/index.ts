@@ -1,7 +1,7 @@
-export * from './model/enums/route-name.enum';
+export { RouteName } from './model/enums/route-name.enum';
 
-export * from './model/enums/route.enum';
+export { Route } from './model/enums/route.enum';
 
-export * from './model/routes';
+export { getFilteredRoutes, getRoutes } from './model/routes';
 
-export * from './model/types/route-object.type';
+export type { Routes } from './model/routes';

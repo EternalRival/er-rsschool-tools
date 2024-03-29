@@ -1,17 +1,17 @@
 import { NavLink } from './nav-link';
 
-import type { RouteObject } from '@/shared/router';
+import type { Routes } from '@/shared/router';
 import type { ReactNode } from 'react';
 
 type Props = Readonly<{
-  routes: RouteObject[];
+  routes: Routes;
 }>;
 
 export function NavBar({ routes }: Props): ReactNode {
   return (
     <nav>
       <ul>
-        {routes.map(({ name, route }) => (
+        {Array.from(routes, ([name, route]) => (
           <li key={route}>
             <NavLink
               href={route}

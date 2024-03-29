@@ -4,10 +4,8 @@ import Head from 'next/head';
 
 import { FloatingGithubLink } from '@/features/floating-github-link';
 import { NavBar } from '@/features/nav-bar';
-import { routes } from '@/shared/router';
-
-import { getFilteredNavRoutes } from '../lib/get-nav-routes';
-import { metadata, siteTitle } from '../../shared/model/constants';
+import { metadata, siteTitle } from '@/shared/model/constants';
+import { RouteName, getFilteredRoutes } from '@/shared/router';
 
 import type { PropsWithChildren, ReactNode } from 'react';
 
@@ -38,7 +36,7 @@ export function Layout({ children }: Props): ReactNode {
         <title>{siteTitle}</title>
       </Head>
       <header className="flex shrink-0 items-center bg-color1 shadow-[0_0_10px_-5px]">
-        <NavBar routes={getFilteredNavRoutes(routes)} />
+        <NavBar routes={getFilteredRoutes((name) => RouteName.HOME !== name)} />
         <FloatingGithubLink />
       </header>
       <main className="flex grow flex-col items-center justify-center p-4">{children}</main>
