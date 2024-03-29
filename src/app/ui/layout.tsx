@@ -9,11 +9,9 @@ import { routes } from '@/shared/router';
 import { getFilteredNavRoutes } from '../lib/get-nav-routes';
 import { metadata, siteTitle } from '../../shared/model/constants';
 
-import type { ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
-type Props = Readonly<{
-  children: ReactNode;
-}>;
+type Props = Readonly<PropsWithChildren>;
 
 const roboto = Roboto({ weight: ['400', '500'], subsets: ['latin', 'cyrillic'] });
 
