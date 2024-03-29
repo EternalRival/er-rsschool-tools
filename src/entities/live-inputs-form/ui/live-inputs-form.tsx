@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 
 import { debounce } from '@/shared/lib/debounce';
-import { StyledForm } from '@/shared/ui/styled-form';
+import { UiForm } from '@/shared/ui';
 
 import type { FormEvent, FormEventHandler, ReactNode } from 'react';
 import type { FormFieldProps } from '../model/form-field-props.type';
@@ -23,7 +23,7 @@ export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debou
   const handleInput = debounceMs ? debounce(handleInputFn, debounceMs) : handleInputFn;
 
   return (
-    <StyledForm
+    <UiForm
       legendText={legendText}
       handleSubmit={handleSubmit}
       className="grid grid-cols-[repeat(2,_max-content)]"
@@ -47,6 +47,6 @@ export function LiveInputsForm({ legendText, inputPropsList, handleSubmit, debou
           />
         </Fragment>
       ))}
-    </StyledForm>
+    </UiForm>
   );
 }

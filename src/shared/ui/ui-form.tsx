@@ -9,7 +9,7 @@ type Props = Readonly<{
   className?: string;
 }>;
 
-export function StyledForm({ children, legendText, handleSubmit, className }: Props): ReactNode {
+export function UiForm({ children, legendText, handleSubmit, className }: Props): ReactNode {
   return (
     <form
       className="bg-color1 p-2 shadow shadow-color4"

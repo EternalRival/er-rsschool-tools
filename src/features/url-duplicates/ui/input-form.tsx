@@ -1,6 +1,6 @@
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 import { RouteName } from '@/shared/router';
-import { StyledForm } from '@/shared/ui/styled-form';
+import { UiButton, UiForm, UiTextField } from '@/shared/ui';
 
 import { parseFormData } from '../model/form-data-schema';
 
@@ -12,11 +12,11 @@ type Props = Readonly<{
 }>;
 
 export function InputForm({ handleSubmit }: Props): ReactNode {
-  const urlsId = 'rawUrls';
-  const idOffsetId = 'idOffset';
+  const urlsName = 'rawUrls';
+  const idOffsetName = 'idOffset';
 
   return (
-    <StyledForm
+    <UiForm
       legendText={RouteName.URL_DUPLICATES}
       handleSubmit={(e) => {
         e.preventDefault();
@@ -26,27 +26,23 @@ export function InputForm({ handleSubmit }: Props): ReactNode {
       className="flex flex-col"
     >
       <textarea
-        name={urlsId}
+        name={urlsName}
         cols={80}
         rows={8}
-        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2"
+        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-400 focus:ring-teal-500"
+        placeholder={[1, 2, 3].map((n) => `https://example.com/${n}`).join('\n')}
       />
-      <div className="flex items-center justify-end py-2">
-        <label htmlFor={idOffsetId}>id offset:</label>
-        <input
-          type="number"
-          id={idOffsetId}
-          name={idOffsetId}
+      <div className="flex items-center justify-end gap-2 py-2">
+        <UiTextField
+          label="id offset:"
+          containerClassName="flex items-center gap-2"
+          className="w-12"
           defaultValue={2}
-          className="w-12 justify-self-start"
+          name={idOffsetName}
+          type="number"
         />
-        <button
-          className="ml-2 rounded bg-color3 px-2 py-1 ring-2 hover:bg-color4 active:bg-color3"
-          type="submit"
-        >
-          Check
-        </button>
+        <UiButton>Check</UiButton>
       </div>
-    </StyledForm>
+    </UiForm>
   );
 }

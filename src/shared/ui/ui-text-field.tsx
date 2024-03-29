@@ -3,6 +3,8 @@ import { useId } from 'react';
 
 import type { InputHTMLAttributes, ReactNode } from 'react';
 
+type InputAttributes = InputHTMLAttributes<HTMLInputElement>;
+
 type Props = Readonly<
   {
     containerClassName?: string;
@@ -11,8 +13,12 @@ type Props = Readonly<
     label?: string;
     error?: string;
     noJumpingErrors?: true;
-  } & Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>
+    type?: Extract<InputAttributes['type'], 'text' | 'number'>;
+  } & Omit<InputAttributes, 'type'>
 >;
+
+const typeNumberReset =
+  '[appearance:textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none';
 
 export function UiTextField({
   containerClassName,
@@ -21,13 +27,14 @@ export function UiTextField({
   label,
   error,
   noJumpingErrors,
+  type = 'text',
   className,
   ...inputProps
 }: Props): ReactNode {
   const id = useId();
 
   return (
-    <div className={clsx('flex flex-col', containerClassName)}>
+    <div className={clsx(containerClassName ?? 'flex flex-col')}>
       {label && (
         <label
           htmlFor={id}
@@ -37,9 +44,11 @@ export function UiTextField({
         </label>
       )}
       <input
-        type="text"
+        id={id}
+        type={type}
         className={clsx(
           'h-8 rounded border border-solid border-neutral-300 px-2 outline-none transition-colors invalid:border-rose-500 focus:border-teal-600 focus:shadow',
+          type === 'number' && typeNumberReset,
           className
         )}
         {...inputProps}

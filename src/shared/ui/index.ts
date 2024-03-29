@@ -2,6 +2,8 @@ export { UiAnchor } from './ui-anchor';
 
 export { UiButton } from './ui-button';
 
+export { UiForm } from './ui-form';
+
 export { UiHeader } from './ui-header';
 
 export { UiLink } from './ui-link';
