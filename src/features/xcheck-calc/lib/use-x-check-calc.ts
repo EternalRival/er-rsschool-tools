@@ -8,13 +8,14 @@ import { getValuableScores } from './get-valuable-scores';
 import type { Dispatch, SetStateAction } from 'react';
 import type { FormData } from '../model/form-data.schema';
 import type { Mode } from '../model/mode.schema';
+import type { Score } from '../model/score.type';
 
 type UseXCheckCalcReturn = {
   mode: Mode;
   setMode: Dispatch<SetStateAction<Mode>>;
   inputValues: FormData;
   setInputValues: Dispatch<SetStateAction<FormData>>;
-  score: { isAppealable: boolean; average: number };
+  score: Score;
 };
 
 export function useXCheckCalc(): UseXCheckCalcReturn {

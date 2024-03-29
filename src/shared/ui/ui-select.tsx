@@ -45,7 +45,7 @@ export function UiSelect({
   const id = useId();
 
   return (
-    <div className={clsx('flex flex-col', containerClassName)}>
+    <div className={clsx(containerClassName ?? 'flex flex-col')}>
       {label && (
         <label
           htmlFor={id}

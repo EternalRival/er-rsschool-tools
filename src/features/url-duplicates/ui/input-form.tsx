@@ -1,32 +1,39 @@
+import { useRef } from 'react';
+
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 import { RouteName } from '@/shared/router';
 import { UiButton, UiForm, UiTextField } from '@/shared/ui';
 
 import { parseFormData } from '../model/form-data-schema';
 
-import type { FormData } from '../model/form-data-schema';
 import type { ReactNode } from 'react';
+import type { FormData } from '../model/form-data-schema';
 
 type Props = Readonly<{
-  handleSubmit: (formData: FormData) => void;
+  onSubmit: (formData: FormData) => void;
 }>;
 
-export function InputForm({ handleSubmit }: Props): ReactNode {
-  const urlsName = 'rawUrls';
-  const idOffsetName = 'idOffset';
+export function InputForm({ onSubmit }: Props): ReactNode {
+  const textArea = useRef<HTMLTextAreaElement>(null);
 
   return (
     <UiForm
       legendText={RouteName.URL_DUPLICATES}
-      handleSubmit={(e) => {
+      onSubmit={(e) => {
         e.preventDefault();
+        const data = parseFormData(getFormDataObject(e.currentTarget));
 
-        handleSubmit(parseFormData(getFormDataObject(e.currentTarget)));
+        if (data.rawUrls) {
+          onSubmit(data);
+        } else {
+          textArea.current?.focus();
+        }
       }}
       className="flex flex-col"
     >
       <textarea
-        name={urlsName}
+        ref={textArea}
+        name="rawUrls"
         cols={80}
         rows={8}
         className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-400 focus:ring-teal-500"
@@ -38,7 +45,7 @@ export function InputForm({ handleSubmit }: Props): ReactNode {
           containerClassName="flex items-center gap-2"
           className="w-12"
           defaultValue={2}
-          name={idOffsetName}
+          name="idOffset"
           type="number"
         />
         <UiButton>Check</UiButton>

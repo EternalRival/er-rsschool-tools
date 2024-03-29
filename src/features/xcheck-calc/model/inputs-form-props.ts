@@ -1,4 +1,4 @@
-import type { FormFieldProps } from '@/entities/live-inputs-form';
+import type { FormFieldProps } from './form-field-props.type';
 
 export const inputsFormProps: FormFieldProps[] = [
   { label: 'Max Score:', name: 'max', className: 'w-20', type: 'number', value: '100' },

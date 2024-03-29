@@ -25,7 +25,7 @@ export function OutputForm({ outputData, onClose }: Props): ReactNode {
     <div className="scroll fixed inset-0 flex items-center justify-center backdrop-blur-sm">
       <UiForm
         legendText={RouteName.URL_DUPLICATES}
-        handleSubmit={(e) => {
+        onSubmit={(e) => {
           e.preventDefault();
 
           onClose();

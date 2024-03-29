@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 
 import { LocalStorageKey, useLocalStorage } from '@/shared/lib/local-storage';
-import { parseDeployUrlParts } from '@/entities/deploy-urls';
 
-import type { DeployUrlParts } from '@/entities/deploy-urls';
+import { parseDeployUrlParts } from '../model/deploy-url-parts.schema';
+
+import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
 
 type UseInputValuesReturn = {
   setInputValues: (inputValue: DeployUrlParts) => void;

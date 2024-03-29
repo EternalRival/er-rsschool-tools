@@ -1,1 +1,1 @@
-export * from './ui/deploy-finder';
+export { DeployFinder } from './ui/deploy-finder';

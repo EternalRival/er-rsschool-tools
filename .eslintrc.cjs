@@ -89,8 +89,18 @@ const config = {
       'error',
       {
         blankLine: 'always',
-        prev: ['case', 'default', 'block', 'block-like', 'multiline-block-like', 'interface', 'type', 'export'],
+        prev: ['case', 'default', 'block', 'block-like', 'multiline-block-like', 'interface', 'type'],
         next: '*',
+      },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: ['export'],
+      },
+      {
+        blankLine: 'any',
+        prev: ['function-overload', 'export'],
+        next: ['function-overload', 'function', 'export'],
       },
       {
         blankLine: 'any',
