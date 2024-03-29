@@ -1,5 +1,6 @@
 import { Route } from '@/shared/router';
 import { useFetch } from '@/shared/lib/swr';
+import { UiAnchor, UiSpinner } from '@/shared/ui';
 
 import { parseDeployUrls } from '../lib/parse-deploy-urls';
 
@@ -14,7 +15,11 @@ export function DeployUrls(params: Props): ReactNode {
   const { data, isLoading } = useFetch(apiUrl, { params });
 
   if (isLoading) {
-    return <span className="p-2">Fetching…</span>;
+    return (
+      <div className="flex h-10 items-center justify-center">
+        <UiSpinner className="scale-50" />
+      </div>
+    );
   }
 
   const deployUrls = parseDeployUrls(data);
@@ -24,13 +29,12 @@ export function DeployUrls(params: Props): ReactNode {
     <ul className="p-2">
       {deployUrls.map((url) => (
         <li key={url}>
-          <a
+          <UiAnchor
             href={url}
-            target="_blank"
-            className="text-blue underline"
+            className="text-teal-600 underline underline-offset-2 hover:text-teal-500"
           >
             {url}
-          </a>
+          </UiAnchor>
         </li>
       ))}
     </ul>

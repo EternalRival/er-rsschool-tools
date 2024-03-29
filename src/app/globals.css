@@ -18,9 +18,10 @@
   @apply cursor-default rounded-2xl bg-color4 shadow-inner shadow-color4;
 }
 
+/* 
 input[type='text'],
 input[type='number'] {
-  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-color-invalid focus:shadow;
+  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-rose-500 focus:shadow;
 }
 
 input[type='number'] {
@@ -36,3 +37,4 @@ input[type='number']::-webkit-inner-spin-button {
 label {
   @apply p-2;
 }
+ */

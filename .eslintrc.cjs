@@ -24,7 +24,7 @@ const config = {
     '@typescript-eslint/consistent-type-exports': ['error', { fixMixedExportsWithInlineTypeSpecifier: true }],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
-    'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
+    'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': ['error', { unnamedComponents: 'arrow-function' }],
     'curly': ['error', 'all'],
     'import/no-cycle': 'error',
@@ -89,8 +89,18 @@ const config = {
       'error',
       {
         blankLine: 'always',
-        prev: ['case', 'default', 'block', 'block-like', 'multiline-block-like', 'interface', 'type', 'export'],
+        prev: ['case', 'default', 'block', 'block-like', 'multiline-block-like', 'interface', 'type'],
         next: '*',
+      },
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: ['export'],
+      },
+      {
+        blankLine: 'any',
+        prev: ['function-overload', 'export'],
+        next: ['function-overload', 'function', 'export'],
       },
       {
         blankLine: 'any',

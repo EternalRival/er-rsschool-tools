@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { parseApiResponse } from '@/shared/api/url-duplicates';
+import { parseApiResponse } from '@/shared/api/url-duplicates/find-url-duplicates';
 import { useFetch } from '@/shared/lib/swr';
 import { Route } from '@/shared/router';
 

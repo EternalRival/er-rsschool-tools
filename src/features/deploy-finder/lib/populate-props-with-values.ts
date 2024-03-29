@@ -1,7 +1,7 @@
-import { parseDeployUrlPartsKey } from '@/entities/deploy-urls';
+import { parseDeployUrlPartsKey } from '../model/deploy-url-parts.schema';
 
-import type { DeployUrlParts } from '@/entities/deploy-urls';
-import type { FormFieldProps } from '@/entities/live-inputs-form';
+import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
+import type { FormFieldProps } from '../model/form-field-props.type';
 
 export function populatePropsWithValues(propsList: FormFieldProps[], values: DeployUrlParts): FormFieldProps[] {
   return propsList.map((props) => {

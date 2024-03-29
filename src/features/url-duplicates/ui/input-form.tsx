@@ -1,52 +1,55 @@
+import { useRef } from 'react';
+
 import { getFormDataObject } from '@/shared/lib/get-form-data-object';
 import { RouteName } from '@/shared/router';
-import { StyledForm } from '@/shared/ui/styled-form';
+import { UiButton, UiForm, UiTextField } from '@/shared/ui';
 
 import { parseFormData } from '../model/form-data-schema';
 
-import type { FormData } from '../model/form-data-schema';
 import type { ReactNode } from 'react';
+import type { FormData } from '../model/form-data-schema';
 
 type Props = Readonly<{
-  handleSubmit: (formData: FormData) => void;
+  onSubmit: (formData: FormData) => void;
 }>;
 
-export function InputForm({ handleSubmit }: Props): ReactNode {
-  const urlsId = 'rawUrls';
-  const idOffsetId = 'idOffset';
+export function InputForm({ onSubmit }: Props): ReactNode {
+  const textArea = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <StyledForm
+    <UiForm
       legendText={RouteName.URL_DUPLICATES}
-      handleSubmit={(e) => {
+      onSubmit={(e) => {
         e.preventDefault();
+        const data = parseFormData(getFormDataObject(e.currentTarget));
 
-        handleSubmit(parseFormData(getFormDataObject(e.currentTarget)));
+        if (data.rawUrls) {
+          onSubmit(data);
+        } else {
+          textArea.current?.focus();
+        }
       }}
       className="flex flex-col"
     >
       <textarea
-        name={urlsId}
+        ref={textArea}
+        name="rawUrls"
         cols={80}
         rows={8}
-        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2"
+        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-400 focus:ring-teal-500"
+        placeholder={[1, 2, 3].map((n) => `https://example.com/${n}`).join('\n')}
       />
-      <div className="flex items-center justify-end py-2">
-        <label htmlFor={idOffsetId}>id offset:</label>
-        <input
-          type="number"
-          id={idOffsetId}
-          name={idOffsetId}
+      <div className="flex items-center justify-end gap-2 py-2">
+        <UiTextField
+          label="id offset:"
+          containerClassName="flex items-center gap-2"
+          className="w-12"
           defaultValue={2}
-          className="w-12 justify-self-start"
+          name="idOffset"
+          type="number"
         />
-        <button
-          className="ml-2 rounded bg-color3 px-2 py-1 ring-2 hover:bg-color4 active:bg-color3"
-          type="submit"
-        >
-          Check
-        </button>
+        <UiButton>Check</UiButton>
       </div>
-    </StyledForm>
+    </UiForm>
   );
 }

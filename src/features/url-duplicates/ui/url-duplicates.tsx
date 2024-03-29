@@ -12,7 +12,7 @@ export function UrlDuplicates(): ReactNode {
   return (
     <div className="flex items-center">
       <InputForm
-        handleSubmit={(formData) => {
+        onSubmit={(formData) => {
           setFormData(formData);
           setShowModal(true);
         }}

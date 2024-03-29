@@ -1,1 +1,1 @@
-export * from './ui/url-duplicates.page';
+export { UrlDuplicatesPage } from './ui/url-duplicates.page';
