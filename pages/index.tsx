@@ -1,5 +1,3 @@
-import type { ReactNode } from 'react';
+import { HomePage } from '@/pages/home';
 
-export default function Home(): ReactNode {
-  return 'Welcome';
-}
+export default HomePage;

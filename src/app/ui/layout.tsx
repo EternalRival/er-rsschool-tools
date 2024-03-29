@@ -7,7 +7,7 @@ import { NavBar } from '@/features/nav-bar';
 import { routes } from '@/shared/router';
 
 import { getFilteredNavRoutes } from '../lib/get-nav-routes';
-import { metadata, siteTitle } from '../model/constants';
+import { metadata, siteTitle } from '../../shared/model/constants';
 
 import type { ReactNode } from 'react';
 

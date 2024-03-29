@@ -1,1 +1,1 @@
-export * from './ui/xcheck-calc.page';
+export { XCheckCalcPage } from './ui/xcheck-calc.page';
