@@ -1,5 +1,7 @@
-export * from './schemas/json.schema';
+export { buildResponseSchema } from './schemas/api-response.schema';
 
-export * from './schemas/string-to-json.schema';
+export { parseJson } from './schemas/json.schema';
 
-export * from './schemas/api-response.schema';
+export type { Json } from './schemas/json.schema';
+
+export { parseStringToJson } from './schemas/string-to-json.schema';

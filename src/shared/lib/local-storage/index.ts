@@ -1,3 +1,3 @@
-export * from './lib/use-local-storage';
+export { useLocalStorage } from './lib/use-local-storage';
 
-export * from './model/local-storage-key.enum';
+export { LocalStorageKey } from './model/local-storage-key.enum';

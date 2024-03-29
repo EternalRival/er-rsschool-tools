@@ -1,1 +1,1 @@
-export * from './model/http-client';
+export { httpClient } from './model/http-client';
