@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 
-import type { DOMAttributes, ReactNode } from 'react';
+import type { FormEventHandler, ReactNode } from 'react';
 
 type Props = Readonly<{
   children: ReactNode;
   legendText?: string;
-  onSubmit?: DOMAttributes<HTMLFormElement>['onSubmit'];
+  onSubmit?: FormEventHandler<HTMLFormElement>;
   className?: string;
 }>;
 
