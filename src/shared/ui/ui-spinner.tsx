@@ -1,14 +1,12 @@
 import clsx from 'clsx';
 
-import type { ReactNode } from 'react';
-
 type Props = Readonly<{
   className?: string;
   borderColor?: string;
   bgColor?: string;
 }>;
 
-export function UiSpinner({ className, borderColor, bgColor }: Props): ReactNode {
+export const UiSpinner = ({ className, borderColor, bgColor }: Props) => {
   const childrenStyles = clsx(
     'absolute h-full w-full border-2',
     borderColor ?? 'border-teal-500',
@@ -27,4 +25,4 @@ export function UiSpinner({ className, borderColor, bgColor }: Props): ReactNode
       </div>
     </div>
   );
-}
+};

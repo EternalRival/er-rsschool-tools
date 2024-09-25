@@ -1,3 +1,3 @@
-import { XCheckCalcPage } from '@/pages/xcheck-calc';
+import { XCheckCalcPage } from '~/pages/xcheck-calc';
 
 export default XCheckCalcPage;

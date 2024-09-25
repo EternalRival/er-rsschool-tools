@@ -1,8 +1,8 @@
-import { parseStringToJson } from '@/shared/lib/zod';
+import { parseStringToJson } from '~/shared/lib/zod';
 
 import { LocalStorageKey } from './local-storage-key.enum';
 
-import type { Json } from '@/shared/lib/zod';
+import type { Json } from '~/shared/lib/zod';
 
 function wrapKey(key: LocalStorageKey): string {
   return `${LocalStorageKey.PREFIX}${key}`;

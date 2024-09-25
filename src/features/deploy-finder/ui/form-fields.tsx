@@ -1,6 +1,6 @@
-import { UiTextField } from '@/shared/ui';
+import { UiTextField } from '~/shared/ui';
 
-import type { FormEventHandler, ReactNode } from 'react';
+import type { FormEventHandler } from 'react';
 import type { FormFieldProps } from '../model/form-field-props.type';
 
 export function FormFields({
@@ -9,7 +9,7 @@ export function FormFields({
 }: {
   inputPropsList: FormFieldProps[];
   onInput: FormEventHandler<HTMLInputElement>;
-}): ReactNode {
+}) {
   return inputPropsList.map(({ label, name, className, value }) => (
     <UiTextField
       key={name}

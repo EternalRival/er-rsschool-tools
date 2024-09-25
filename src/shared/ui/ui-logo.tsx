@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 
 type ImageProps = Parameters<typeof Image>[0];
 
@@ -19,7 +19,7 @@ const defaultImageProps = {
   height: 48,
 };
 
-export function UiLogo({
+export const UiLogo = ({
   label,
   imageProps: {
     alt = defaultImageProps.alt,
@@ -30,21 +30,19 @@ export function UiLogo({
   } = defaultImageProps,
   className,
   ...props
-}: Props): ReactNode {
-  return (
-    <div
-      {...props}
-      className={clsx('flex items-center gap-2 text-xl', className)}
-    >
-      <Image
-        className="h-12 w-12"
-        alt={alt}
-        src={src}
-        width={width}
-        height={height}
-        {...imageProps}
-      />
-      {label}
-    </div>
-  );
-}
+}: Props) => (
+  <div
+    {...props}
+    className={clsx('flex items-center gap-2 text-xl', className)}
+  >
+    <Image
+      className="h-12 w-12"
+      alt={alt}
+      src={src}
+      width={width}
+      height={height}
+      {...imageProps}
+    />
+    {label}
+  </div>
+);

@@ -1,6 +1,6 @@
 import { fetcher } from '../lib/fetcher';
 
-import type { Json } from '@/shared/lib/zod';
+import type { Json } from '~/shared/lib/zod';
 import type { FetcherOptions } from './fetcher-options.type';
 
 type HttpClientOptions = Omit<FetcherOptions, 'method'>;

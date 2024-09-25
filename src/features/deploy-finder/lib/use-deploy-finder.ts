@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { LocalStorageKey, useLocalStorage } from '@/shared/lib/local-storage';
+import { LocalStorageKey, useLocalStorage } from '~/shared/lib/local-storage';
 
 import { parseDeployUrlParts } from '../model/deploy-url-parts.schema';
 

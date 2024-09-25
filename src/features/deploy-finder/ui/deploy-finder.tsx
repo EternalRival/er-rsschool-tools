@@ -1,6 +1,6 @@
-import { debounce } from '@/shared/lib/debounce';
-import { getFormDataObject } from '@/shared/lib/get-form-data-object';
-import { UiForm } from '@/shared/ui';
+import { debounce } from '~/shared/lib/debounce';
+import { getFormDataObject } from '~/shared/lib/get-form-data-object';
+import { UiForm } from '~/shared/ui';
 
 import { populatePropsWithValues } from '../lib/populate-props-with-values';
 import { useDeployFinder } from '../lib/use-deploy-finder';
@@ -9,12 +9,12 @@ import { inputsFormProps } from '../model/inputs-form-props';
 import { DeployUrls } from './deploy-urls';
 import { FormFields } from './form-fields';
 
-import type { FormEventHandler, ReactNode } from 'react';
+import type { FormEventHandler } from 'react';
 
 const FORM_LEGEND_TEXT = 'Deploy Finder';
 const DEBOUNCE_DELAY = 1000;
 
-export function DeployFinder(): ReactNode {
+export const DeployFinder = () => {
   const { inputValues, isFilled, setInputValues } = useDeployFinder();
 
   const handleInput = debounce<FormEventHandler<HTMLInputElement>>(({ target }) => {
@@ -41,4 +41,4 @@ export function DeployFinder(): ReactNode {
       {isFilled ? <DeployUrls {...inputValues} /> : <p className="p-2">Enter your data</p>}
     </>
   );
-}
+};

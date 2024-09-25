@@ -1,17 +1,16 @@
-import { Route } from '@/shared/router';
-import { useFetch } from '@/shared/lib/swr';
-import { UiAnchor, UiSpinner } from '@/shared/ui';
+import { Route } from '~/shared/router';
+import { useFetch } from '~/shared/lib/swr';
+import { UiAnchor, UiSpinner } from '~/shared/ui';
 
 import { parseDeployUrls } from '../lib/parse-deploy-urls';
 
-import type { ReactNode } from 'react';
 import type { DeployUrlParts } from '../model/deploy-url-parts.schema';
 
 type Props = Readonly<DeployUrlParts>;
 
 const apiUrl = `${Route.DEPLOY_FINDER_API}/find-deploy-urls`;
 
-export function DeployUrls(params: Props): ReactNode {
+export const DeployUrls = (params: Props) => {
   const { data, isLoading } = useFetch(apiUrl, { params });
 
   if (isLoading) {
@@ -41,4 +40,4 @@ export function DeployUrls(params: Props): ReactNode {
   ) : (
     <span className="p-2">Not Found</span>
   );
-}
+};

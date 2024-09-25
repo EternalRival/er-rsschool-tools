@@ -1,5 +1,1 @@
-import type { ReactNode } from 'react';
-
-export function HomePage(): ReactNode {
-  return <h1>Welcome</h1>;
-}
+export const HomePage = () => <h1>Welcome</h1>;

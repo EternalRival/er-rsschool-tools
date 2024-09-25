@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useId } from 'react';
 
-import type { ReactNode, SelectHTMLAttributes } from 'react';
+import type { SelectHTMLAttributes } from 'react';
 
 type SelectOption = Readonly<{
   label: string;
@@ -20,7 +20,7 @@ type Props = Readonly<
   } & SelectHTMLAttributes<HTMLSelectElement>
 >;
 
-function buildOptions(options: SelectOption[]): ReactNode[] {
+function buildOptions(options: SelectOption[]) {
   return options.map(({ label, value }) => (
     <option
       key={label}
@@ -31,7 +31,7 @@ function buildOptions(options: SelectOption[]): ReactNode[] {
   ));
 }
 
-export function UiSelect({
+export const UiSelect = ({
   containerClassName,
   labelClassName,
   errorClassName,
@@ -41,7 +41,7 @@ export function UiSelect({
   selectOptions,
   className,
   ...selectProps
-}: Props): ReactNode {
+}: Props) => {
   const id = useId();
 
   return (
@@ -69,4 +69,4 @@ export function UiSelect({
       )}
     </div>
   );
-}
+};

@@ -1,9 +1,9 @@
 import useSWR from 'swr';
 
-import { httpClient } from '@/shared/lib/http-client';
+import { httpClient } from '~/shared/lib/http-client';
 
-import type { Json } from '@/shared/lib/zod';
 import type { SWRResponse } from 'swr';
+import type { Json } from '~/shared/lib/zod';
 
 type Args = Parameters<typeof httpClient.fetch>;
 

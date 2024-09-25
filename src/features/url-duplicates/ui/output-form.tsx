@@ -1,18 +1,17 @@
 import clsx from 'clsx';
 import { useEffect } from 'react';
 
-import { RouteName } from '@/shared/router';
-import { UiButton, UiForm } from '@/shared/ui';
+import { RouteName } from '~/shared/router';
+import { UiButton, UiForm } from '~/shared/ui';
 
-import type { Json } from '@/shared/lib/zod';
-import type { ReactNode } from 'react';
+import type { Json } from '~/shared/lib/zod';
 
 type Props = Readonly<{
   outputData: Json;
   onClose: () => void;
 }>;
 
-export function OutputForm({ outputData, onClose }: Props): ReactNode {
+export const OutputForm = ({ outputData, onClose }: Props) => {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
 
@@ -35,7 +34,7 @@ export function OutputForm({ outputData, onClose }: Props): ReactNode {
         <textarea
           cols={90}
           rows={12}
-          className={clsx('scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2  ring-teal-500')}
+          className={clsx('scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-500')}
           readOnly
           value={JSON.stringify(outputData, null, 2)}
         />
@@ -43,4 +42,4 @@ export function OutputForm({ outputData, onClose }: Props): ReactNode {
       </UiForm>
     </div>
   );
-}
+};
