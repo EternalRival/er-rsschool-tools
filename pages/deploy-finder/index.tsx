@@ -1,3 +1,3 @@
-import { DeployFinderPage } from '@/pages/deploy-finder';
+import { DeployFinderPage } from '~/pages/deploy-finder';
 
 export default DeployFinderPage;

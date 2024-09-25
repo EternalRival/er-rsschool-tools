@@ -1,10 +1,10 @@
-import { parseJson } from '@/shared/lib/zod';
+import { parseJson } from '~/shared/lib/zod';
 
 import { buildBody } from './build-body';
 import { buildHeaders } from './build-headers';
 import { buildUrl } from './build-url';
 
-import type { Json } from '@/shared/lib/zod';
+import type { Json } from '~/shared/lib/zod';
 import type { FetcherOptions } from '../model/fetcher-options.type';
 
 export function fetcher(url: string, init?: FetcherOptions): Promise<Json> {

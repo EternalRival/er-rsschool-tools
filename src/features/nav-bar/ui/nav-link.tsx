@@ -2,14 +2,12 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import type { ReactNode } from 'react';
-
 type Props = Readonly<{
   href: string;
   name: string;
 }>;
 
-export function NavLink({ href, name }: Props): ReactNode {
+export const NavLink = ({ href, name }: Props) => {
   const { pathname } = useRouter();
 
   const isActivePath = pathname === href;
@@ -25,4 +23,4 @@ export function NavLink({ href, name }: Props): ReactNode {
       {name}
     </Link>
   );
-}
+};

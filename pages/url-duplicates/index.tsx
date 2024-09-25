@@ -1,3 +1,3 @@
-import { UrlDuplicatesPage } from '@/pages/url-duplicates';
+import { UrlDuplicatesPage } from '~/pages/url-duplicates';
 
 export default UrlDuplicatesPage;

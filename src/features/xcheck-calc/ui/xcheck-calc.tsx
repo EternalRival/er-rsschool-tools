@@ -1,5 +1,5 @@
-import { getFormDataObject } from '@/shared/lib/get-form-data-object';
-import { UiForm } from '@/shared/ui';
+import { getFormDataObject } from '~/shared/lib/get-form-data-object';
+import { UiForm } from '~/shared/ui';
 
 import { useXCheckCalc } from '../lib/use-x-check-calc';
 import { parseFormData } from '../model/form-data.schema';
@@ -9,11 +9,9 @@ import { FormFields } from './form-fields';
 import { ModeSelect } from './mode-select';
 import { CalcResult } from './calc-result';
 
-import type { ReactNode } from 'react';
-
 const FORM_LEGEND_TEXT = 'xCheck Calc';
 
-export function XCheckCalc(): ReactNode {
+export const XCheckCalc = () => {
   const { mode, setMode, setInputValues, score } = useXCheckCalc();
 
   return (
@@ -37,4 +35,4 @@ export function XCheckCalc(): ReactNode {
       <CalcResult score={score} />
     </div>
   );
-}
+};

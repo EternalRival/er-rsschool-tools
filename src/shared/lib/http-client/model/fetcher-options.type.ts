@@ -1,4 +1,4 @@
-import type { Json } from '@/shared/lib/zod';
+import type { Json } from '~/shared/lib/zod';
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 

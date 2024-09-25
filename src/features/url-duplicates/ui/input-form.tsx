@@ -1,19 +1,18 @@
 import { useRef } from 'react';
 
-import { getFormDataObject } from '@/shared/lib/get-form-data-object';
-import { RouteName } from '@/shared/router';
-import { UiButton, UiForm, UiTextField } from '@/shared/ui';
+import { getFormDataObject } from '~/shared/lib/get-form-data-object';
+import { RouteName } from '~/shared/router';
+import { UiButton, UiForm, UiTextField } from '~/shared/ui';
 
 import { parseFormData } from '../model/form-data-schema';
 
-import type { ReactNode } from 'react';
 import type { FormData } from '../model/form-data-schema';
 
 type Props = Readonly<{
   onSubmit: (formData: FormData) => void;
 }>;
 
-export function InputForm({ onSubmit }: Props): ReactNode {
+export const InputForm = ({ onSubmit }: Props) => {
   const textArea = useRef<HTMLTextAreaElement>(null);
 
   return (
@@ -52,4 +51,4 @@ export function InputForm({ onSubmit }: Props): ReactNode {
       </div>
     </UiForm>
   );
-}
+};

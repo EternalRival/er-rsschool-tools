@@ -1,4 +1,4 @@
-import { parseUrl } from '@/shared/lib/parse-url';
+import { parseUrl } from '~/shared/lib/parse-url';
 
 import { getParamsTuples } from './get-params-tuples';
 

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { buildResponseSchema } from '@/shared/lib/zod';
+import { buildResponseSchema } from '~/shared/lib/zod';
 
 const responseDataSchema = z.object({
   unique: z.record(z.string()),

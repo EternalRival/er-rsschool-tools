@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useId } from 'react';
 
-import type { InputHTMLAttributes, ReactNode } from 'react';
+import type { InputHTMLAttributes } from 'react';
 
 type InputAttributes = InputHTMLAttributes<HTMLInputElement>;
 
@@ -20,7 +20,7 @@ type Props = Readonly<
 const typeNumberReset =
   '[appearance:textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none';
 
-export function UiTextField({
+export const UiTextField = ({
   containerClassName,
   labelClassName,
   errorClassName,
@@ -30,7 +30,7 @@ export function UiTextField({
   type = 'text',
   className,
   ...inputProps
-}: Props): ReactNode {
+}: Props) => {
   const id = useId();
 
   return (
@@ -58,4 +58,4 @@ export function UiTextField({
       )}
     </div>
   );
-}
+};

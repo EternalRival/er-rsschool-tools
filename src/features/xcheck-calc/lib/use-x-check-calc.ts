@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-import { sumArray } from '@/shared/lib/sum-array';
+import { sumArray } from '~/shared/lib/sum-array';
 
 import { defaultFormData } from '../model/constants';
 import { getValuableScores } from './get-valuable-scores';

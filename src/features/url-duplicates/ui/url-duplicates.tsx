@@ -4,9 +4,7 @@ import { useUrlDuplicates } from '../lib/use-url-duplicates';
 import { InputForm } from './input-form';
 import { OutputForm } from './output-form';
 
-import type { ReactNode } from 'react';
-
-export function UrlDuplicates(): ReactNode {
+export const UrlDuplicates = () => {
   const { urlDuplicatesObject, setFormData, showModal, setShowModal } = useUrlDuplicates();
 
   return (
@@ -27,4 +25,4 @@ export function UrlDuplicates(): ReactNode {
         )}
     </div>
   );
-}
+};
