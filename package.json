@@ -38,7 +38,7 @@
     "commitlint": "commitlint --edit",
     "lint-staged": "lint-staged",
     "test": "vitest",
-    "prepare": "husky"
+    "prepare": "node .husky/install.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "5.56.2",
