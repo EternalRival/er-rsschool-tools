@@ -5,7 +5,7 @@ import { Form } from '~/components/form';
 import { TextField } from '~/components/text-field';
 import { RouteName } from '~/config/router/route-name.enum';
 
-import type { InputFormData } from '../../types/input-form-data.type';
+import type { InputFormData } from '../types/input-form-data.type';
 
 const TEXTAREA_PROPS = {
   cols: 80,

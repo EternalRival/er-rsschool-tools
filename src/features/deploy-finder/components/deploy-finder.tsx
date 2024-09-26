@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 
 import { LocalStorageKey, wrappedLS } from '~/utils/wrapped-ls';
 
-import { formDataSchema } from '../../schemas/form-data.schema';
-import { DeployFinderForm } from '../deploy-finder-form';
+import { formDataSchema } from '../schemas/form-data.schema';
+import { DeployFinderForm } from './deploy-finder-form';
 
 import type { Json } from '~/lib/zod/json.schema';
-import type { FormData } from '../../schemas/form-data.schema';
+import type { FormData } from '../schemas/form-data.schema';
 
 const EMPTY_FORM_DATA = {
   nickname: '',

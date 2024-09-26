@@ -7,7 +7,7 @@ import { metadata, siteTitle } from '~/config/constants';
 import { RouteName } from '~/config/router/route-name.enum';
 import { getFilteredRoutes } from '~/utils/get-filtered-routes';
 
-import { NavBar } from '../nav-bar';
+import { NavBar } from './nav-bar';
 
 import type { PropsWithChildren } from 'react';
 
