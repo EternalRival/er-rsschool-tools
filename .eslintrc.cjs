@@ -1,11 +1,6 @@
 // @ts-check
 
-const ignorePatterns = [
-  'dist',
-  'coverage',
-  'node_modules',
-  '*.config.*',
-];
+const ignorePatterns = ['dist', 'coverage', 'node_modules', '*.config.*'];
 
 /** @type {import('eslint').Linter.Config} */
 const config = {
@@ -57,6 +52,27 @@ const config = {
     'jsx-a11y/click-events-have-key-events': 'off', // false positive on dialog click
     'jsx-a11y/no-noninteractive-element-interactions': 'off', // false positive on dialog click
     '@typescript-eslint/prefer-nullish-coalescing': ['error', { ignoreConditionalTests: true }],
+
+    'import/no-restricted-paths': [
+      'error',
+      {
+        zones: [
+          ...['deploy-finder', 'url-duplicates', 'xcheck-calc'].map((feature) => ({
+            target: `./src/features/${feature}`,
+            from: './src/features',
+            except: [`./${feature}`],
+          })),
+          {
+            target: './src/features',
+            from: './src/pages',
+          },
+          {
+            target: ['./src/components', './src/config'],
+            from: ['./src/features', './src/pages'],
+          },
+        ],
+      },
+    ],
 
     'no-constant-binary-expression': 'error',
     'no-negated-condition': 'error',
