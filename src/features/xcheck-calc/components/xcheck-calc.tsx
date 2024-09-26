@@ -6,10 +6,10 @@ import { Form } from '~/components/form';
 import { Select } from '~/components/select';
 import { TextField } from '~/components/text-field';
 
-import { calcScore } from '../../utils/calc-score';
+import { calcScore } from '../utils/calc-score';
 
-import type { Mode } from '../../types/mode.type';
-import type { XCheckFormData } from '../../types/xcheck-form-data.type';
+import type { Mode } from '../types/mode.type';
+import type { XCheckFormData } from '../types/xcheck-form-data.type';
 
 const FORM_LEGEND_TEXT = 'xCheck Calc';
 

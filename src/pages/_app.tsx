@@ -1,6 +1,6 @@
 import '~/assets/globals.css';
-import { Layout } from '~/features/layout/components/layout';
 import { Providers } from '~/config/providers';
+import { Layout } from '~/features/layout/components/layout';
 
 import type { AppProps } from 'next/app';
 

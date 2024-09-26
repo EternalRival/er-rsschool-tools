@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import { findUrlDuplicates } from '../../utils/find-url-duplicates';
-import { InputForm } from '../input-form';
-import { OutputDialog } from '../output-dialog';
+import { findUrlDuplicates } from '../utils/find-url-duplicates';
+import { InputForm } from './input-form';
+import { OutputDialog } from './output-dialog';
 
 import type { ComponentProps } from 'react';
 

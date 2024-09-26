@@ -9,12 +9,12 @@ import { Spinner } from '~/components/spinner';
 import { TextField } from '~/components/text-field';
 import { Route } from '~/config/router/route.enum';
 
-import { apiResponseSchema } from '../../schemas/api-response.schema';
-import { formDataSchema } from '../../schemas/form-data.schema';
-import { DeployUrls } from '../deploy-urls';
+import { apiResponseSchema } from '../schemas/api-response.schema';
+import { formDataSchema } from '../schemas/form-data.schema';
+import { DeployUrls } from './deploy-urls';
 
 import type { Json } from '~/lib/zod/json.schema';
-import type { FormData } from '../../schemas/form-data.schema';
+import type { FormData } from '../schemas/form-data.schema';
 
 const FORM_LEGEND_TEXT = 'Deploy Finder';
 const DEBOUNCE_DELAY = 1000;
