@@ -34,7 +34,7 @@ export const InputForm = ({ onSubmit }: InputFormProps) => {
       <textarea
         {...register('rawUrls', { required: true })}
         {...TEXTAREA_PROPS}
-        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-400 focus:ring-teal-500"
+        className="scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-blue-chill-500 focus-visible:ring-blue-chill-600"
       />
       <div className="flex items-center justify-end gap-2 py-2">
         <TextField

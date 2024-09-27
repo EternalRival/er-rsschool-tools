@@ -3,7 +3,7 @@ import { Roboto } from 'next/font/google';
 import Head from 'next/head';
 
 import { FloatingGithubLink } from '~/components/floating-github-link';
-import { metadata, siteTitle } from '~/config/constants';
+import { metadata, siteTitle } from '~/config/metadata/constants';
 import { RouteName } from '~/config/router/route-name.enum';
 import { getFilteredRoutes } from '~/utils/get-filtered-routes';
 
@@ -16,7 +16,7 @@ type LayoutProps = PropsWithChildren;
 const roboto = Roboto({ weight: ['400', '500'], subsets: ['latin', 'cyrillic'] });
 
 export const Layout = ({ children }: LayoutProps) => (
-  <div className={clsx(roboto.className, 'flex min-h-screen bg-color2')}>
+  <div className={clsx(roboto.className, 'flex min-h-screen bg-blue-chill-100')}>
     <Head>
       <link
         rel="icon"
@@ -36,7 +36,7 @@ export const Layout = ({ children }: LayoutProps) => (
       ))}
       <title>{siteTitle}</title>
     </Head>
-    <header className="flex shrink-0 items-center bg-color1 shadow-[0_0_10px_-5px]">
+    <header className="flex shrink-0 items-center bg-blue-chill-50 shadow-[0_0_10px_-5px_#008c8c]">
       <NavBar routes={getFilteredRoutes((name) => RouteName.HOME !== name)} />
       <FloatingGithubLink />
     </header>

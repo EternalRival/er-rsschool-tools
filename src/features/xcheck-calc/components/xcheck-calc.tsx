@@ -43,7 +43,7 @@ export const XCheckCalc = () => {
         {...modeForm.register('mode')}
         selectOptions={MODE_VARIANTS.map((variant) => ({ label: variant, value: variant }))}
         containerClassName="contents"
-        className="rounded-none border-none bg-color1 text-end shadow shadow-color4 outline-none"
+        className="rounded-none border-none bg-blue-chill-50 text-end shadow shadow-blue-chill-700 outline-none"
       />
 
       <Form
@@ -67,8 +67,8 @@ export const XCheckCalc = () => {
 
       <p
         className={clsx(
-          'bg-color1 p-2 text-center',
-          score.isAppealable ? 'shadow-color-valid shadow-sm' : 'shadow shadow-color4'
+          'bg-blue-chill-50 p-2 text-center shadow-blue-chill-700',
+          score.isAppealable ? 'shadow-md' : 'shadow'
         )}
       >
         {score.averageScore}

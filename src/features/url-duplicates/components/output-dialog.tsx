@@ -24,7 +24,10 @@ export const OutputDialog = ({ open, onClose, data }: OutputDialogProps) => (
   >
     <textarea
       {...TEXTAREA_PROPS}
-      className={clsx('scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-teal-500', 'mx-0.5 -mb-1')}
+      className={clsx(
+        'scrollbar resize-none rounded-sm p-2 text-sm outline-none ring-2 ring-blue-chill-600',
+        'mx-0.5 -mb-1'
+      )}
       readOnly
       value={data}
     />

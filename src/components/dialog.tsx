@@ -143,12 +143,12 @@ export const Dialog = (props: DialogProps) => {
     createPortal(
       <dialog
         ref={dialogRef}
-        className="shadow shadow-color4 backdrop:bg-transparent backdrop:backdrop-blur-sm"
+        className="scrollbar shadow shadow-blue-chill-700 backdrop:bg-transparent backdrop:backdrop-blur-sm"
         onCancel={handleDialogCancel}
         onClick={handleDialogClick}
         onClose={handleDialogClose}
       >
-        <div className="flex min-w-96 flex-col gap-4 bg-color1 p-4">
+        <div className="flex min-w-96 flex-col gap-4 bg-blue-chill-50 p-4">
           <div {...contentContainerProps}>{children}</div>
 
           <div className="flex gap-3">

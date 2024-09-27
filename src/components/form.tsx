@@ -10,7 +10,7 @@ type FormProps = PropsWithChildren<{
 
 export const Form = ({ children, legendText, onSubmit, className }: FormProps) => (
   <form
-    className="bg-color1 p-2 shadow shadow-color4"
+    className="bg-blue-chill-50 p-2 shadow shadow-blue-chill-700"
     onSubmit={onSubmit}
   >
     <fieldset className={clsx('p-2', className)}>

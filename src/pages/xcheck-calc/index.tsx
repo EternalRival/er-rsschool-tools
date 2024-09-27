@@ -1,8 +1,8 @@
 import Head from 'next/head';
 
-import { XCheckCalc } from '~/features/xcheck-calc/components/xcheck-calc';
-import { siteTitle } from '~/config/constants';
+import { siteTitle } from '~/config/metadata/constants';
 import { RouteName } from '~/config/router/route-name.enum';
+import { XCheckCalc } from '~/features/xcheck-calc/components/xcheck-calc';
 
 export const XCheckCalcPage = () => (
   <>

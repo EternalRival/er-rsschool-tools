@@ -12,10 +12,6 @@ const config = {
         },
       },
       colors: {
-        'color1': '#e3fdfd',
-        'color2': '#cbf1f5',
-        'color3': '#a6e3e9',
-        'color4': '#71c9ce',
         'blue-chill': {
           '50': '#eefffc',
           '100': '#c5fffa',

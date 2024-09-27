@@ -17,8 +17,8 @@ export const NavBar = ({ routes }: NavBarProps) => {
             <Link
               href={route}
               className={clsx(
-                'block p-3 transition-colors',
-                pathname === route ? 'bg-color3' : 'hover:bg-color3 hover:bg-opacity-60 active:bg-color3'
+                'block p-3 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-blue-chill-500',
+                pathname === route ? 'bg-blue-chill-500/40' : 'hover:bg-blue-chill-500/25 active:bg-blue-chill-500/40'
               )}
             >
               {name}

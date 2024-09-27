@@ -11,30 +11,9 @@
 }
 
 :is(body, .scrollbar)::-webkit-scrollbar-track {
-  @apply cursor-default bg-color2;
+  @apply cursor-default bg-blue-chill-100;
 }
 
 :is(body, .scrollbar)::-webkit-scrollbar-thumb {
-  @apply cursor-default rounded-2xl bg-color4 shadow-inner shadow-color4;
+  @apply cursor-default rounded-2xl bg-blue-chill-500/60;
 }
-
-/* 
-input[type='text'],
-input[type='number'] {
-  @apply border border-solid border-color4 px-2 py-1 outline-none invalid:border-rose-500 focus:shadow;
-}
-
-input[type='number'] {
-  appearance: textfield;
-}
-
-input[type='number']::-webkit-outer-spin-button,
-input[type='number']::-webkit-inner-spin-button {
-  margin: 0;
-  appearance: none;
-}
-
-label {
-  @apply p-2;
-}
- */

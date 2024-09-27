@@ -50,7 +50,7 @@ const TextFieldComponent = (
         id={id}
         type={type}
         className={clsx(
-          'h-8 rounded border border-solid border-neutral-300 px-2 outline-none transition-colors invalid:border-rose-500 focus:border-teal-600 focus:shadow',
+          'h-8 rounded border border-solid border-neutral-300 px-2 outline-none transition-colors invalid:border-rose-500 focus-visible:border-blue-chill-600 focus-visible:shadow',
           type === 'number' && typeNumberReset,
           className
         )}

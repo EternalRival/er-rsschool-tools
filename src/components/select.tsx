@@ -62,7 +62,7 @@ const SelectComponent = (
         ref={ref}
         id={id}
         className={clsx(
-          'h-8 rounded border border-solid border-neutral-300 px-2 outline-none transition-colors invalid:border-rose-500 focus:border-teal-600 focus:shadow',
+          'h-8 rounded border border-solid border-neutral-300 px-2 outline-none transition-colors invalid:border-rose-500 focus-visible:border-blue-chill-600 focus-visible:shadow focus-visible:ring-2 focus-visible:ring-blue-chill-500',
           className
         )}
       >

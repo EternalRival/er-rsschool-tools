@@ -9,8 +9,8 @@ type SpinnerProps = {
 export const Spinner = ({ className, borderColor, bgColor }: SpinnerProps) => {
   const childrenStyles = clsx(
     'absolute h-full w-full border-2',
-    borderColor ?? 'border-teal-500',
-    bgColor ?? 'bg-teal-500/25'
+    borderColor ?? 'border-blue-chill-500',
+    bgColor ?? 'bg-blue-chill-500/25'
   );
 
   return (
