@@ -29,9 +29,9 @@ export const XCheckCalc = () => {
   const modeForm = useForm<{ mode: Mode }>();
 
   const mode = modeForm.watch('mode');
-  const inputs = watch();
+  const { max, self, reviewer1, reviewer2, reviewer3, reviewer4 } = watch();
 
-  const score = calcScore(mode, inputs);
+  const score = calcScore(mode, { max, self, scoreList: [reviewer1, reviewer2, reviewer3, reviewer4] });
 
   useEffect(() => {
     setValue('reviewer4', '');

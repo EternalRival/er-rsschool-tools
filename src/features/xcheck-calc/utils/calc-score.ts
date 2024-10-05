@@ -1,16 +1,15 @@
 import type { Mode } from '../types/mode.type';
-import type { XCheckFormData } from '../types/xcheck-form-data.type';
 
 const MAX_REVIEWERS_MAP = {
   JSFE: 4,
   NodeJS: 3,
 } as const;
 
-function removeEmptyReviews(list: string[]): string[] {
+function pruneMissingScores(list: string[]): string[] {
   return list.filter((review) => review !== '');
 }
 
-function parseValuableScoreList({ list, maxReviewers }: { list: string[]; maxReviewers: number }): number[] {
+function parseCountableScores({ list, maxReviewers }: { list: string[]; maxReviewers: number }): number[] {
   return list
     .map(Number)
     .sort((a, b) => b - a)
@@ -29,12 +28,12 @@ function checkIsAppealable({ self, averageScore, max }: { self: number; averageS
   return self - averageScore >= max * 0.1;
 }
 
-export function calcScore(mode: Mode, { max, self, reviewer1, reviewer2, reviewer3, reviewer4 }: XCheckFormData) {
-  const scoreList = removeEmptyReviews([reviewer1, reviewer2, reviewer3, reviewer4]);
+export function calcScore(mode: Mode, { max, self, scoreList }: { max: number; self: number; scoreList: string[] }) {
+  const receivedScores = pruneMissingScores(scoreList);
 
-  const valuableScoreList = parseValuableScoreList({ list: scoreList, maxReviewers: MAX_REVIEWERS_MAP[mode] });
+  const countableScores = parseCountableScores({ list: receivedScores, maxReviewers: MAX_REVIEWERS_MAP[mode] });
 
-  const averageScore = calcAverageScore({ list: valuableScoreList, method: 'round' });
+  const averageScore = calcAverageScore({ list: countableScores, method: 'round' });
 
   const isAppealable = checkIsAppealable({ self, averageScore, max });
 

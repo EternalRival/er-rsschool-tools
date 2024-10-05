@@ -5,15 +5,9 @@ describe('calcScore', () => {
     it.each([
       ['JSFE', [100, 100, '', '', '', ''], [0, true]],
       ['NodeJS', [100, 100, '', '', '', ''], [0, true]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 
   describe('1 reviewer', () => {
@@ -24,15 +18,9 @@ describe('calcScore', () => {
       ['NodeJS', [100, 100, '0', '', '', ''], [0, true]],
       ['NodeJS', [100, 100, '50', '', '', ''], [50, true]],
       ['NodeJS', [100, 100, '100', '', '', ''], [100, false]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 
   describe('2 reviewers', () => {
@@ -56,15 +44,9 @@ describe('calcScore', () => {
       ['NodeJS', [100, 100, '100', '0', '', ''], [50, true]],
       ['NodeJS', [100, 100, '100', '50', '', ''], [75, true]],
       ['NodeJS', [100, 100, '100', '100', '', ''], [100, false]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 
   describe('3 reviewer', () => {
@@ -106,15 +88,9 @@ describe('calcScore', () => {
       ['NodeJS', [100, 100, '100', '100', '0', ''], [100, false]],
       ['NodeJS', [100, 100, '100', '100', '50', ''], [100, false]],
       ['NodeJS', [100, 100, '100', '100', '100', ''], [100, false]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 
   describe('4 reviewer', () => {
@@ -173,15 +149,9 @@ describe('calcScore', () => {
       ['JSFE', [100, 100, '100', '100', '100', '0'], [100, false]],
       ['JSFE', [100, 100, '100', '100', '100', '50'], [100, false]],
       ['JSFE', [100, 100, '100', '100', '100', '100'], [100, false]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 
   describe('edge cases', () => {
@@ -197,14 +167,8 @@ describe('calcScore', () => {
       ['NodeJS', [100, 100, '100', '97', '', ''], [99, false]],
       ['NodeJS', [100, 100, '100', '98', '', ''], [99, false]],
       ['NodeJS', [100, 100, '100', '99', '', ''], [100, false]],
-    ] as const)(
-      '(%s):\t%j\t=>\t%j',
-      (mode, [max, self, reviewer1, reviewer2, reviewer3, reviewer4], [averageScore, isAppealable]) => {
-        const formData = { max, self, reviewer1, reviewer2, reviewer3, reviewer4 };
-        const expected = { averageScore, isAppealable };
-
-        expect(calcScore(mode, formData)).toEqual(expected);
-      }
-    );
+    ] as const)('(%s):\t%j\t=>\t%j', (mode, [max, self, ...scoreList], [averageScore, isAppealable]) => {
+      expect(calcScore(mode, { max, self, scoreList })).toEqual({ averageScore, isAppealable });
+    });
   });
 });
