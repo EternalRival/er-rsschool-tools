@@ -126,18 +126,6 @@ export const Dialog = (props: DialogProps) => {
     }
   }, [dialogOpen, open]);
 
-  useLayoutEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-
-    if (open) {
-      document.body.style.overflow = 'hidden';
-    }
-
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, [open]);
-
   return (
     open &&
     createPortal(

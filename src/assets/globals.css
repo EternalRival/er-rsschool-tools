@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  &:has(dialog[open]) {
+    @apply overflow-hidden;
+  }
+}
+
 :is(body, .scrollbar) {
-  overflow: auto;
+  @apply overflow-auto;
 }
 
 :is(body, .scrollbar)::-webkit-scrollbar {
