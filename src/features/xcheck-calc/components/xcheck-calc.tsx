@@ -13,6 +13,10 @@ import type { XCheckFormData } from '../types/xcheck-form-data.type';
 
 const FORM_LEGEND_TEXT = 'xCheck Calc';
 
+const APPEALABLE_TEXT =
+  'You have the opportunity to request an appeal (if the data entered is correct and the other conditions for an appeal from the documentation are met).';
+const UNAPPEALABLE_TEXT = `You cannot request an appeal because the expected grade and average grade must differ by 10% or more from the maximum grade for the assignment.`;
+
 const MODE_VARIANTS = ['JSFE', 'NodeJS'] satisfies Mode[];
 
 const INPUTS_FORM_PROPS = [
@@ -70,6 +74,7 @@ export const XCheckCalc = () => {
           'bg-blue-chill-50 p-2 text-center shadow-blue-chill-700',
           score.isAppealable ? 'shadow-md' : 'shadow'
         )}
+        title={score.isAppealable ? APPEALABLE_TEXT : UNAPPEALABLE_TEXT}
       >
         {score.averageScore}
       </p>
