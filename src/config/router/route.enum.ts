@@ -6,4 +6,6 @@ export const enum Route {
   DEPLOY_FINDER_API = '/api/deploy-finder',
   URL_DUPLICATES = '/url-duplicates',
   URL_DUPLICATES_API = '/api/url-duplicates',
+  GRATITUDE_SUMMARY = '/gratitude-summary',
+  GRATITUDE_SUMMARY_API = '/api/gratitude-summary',
 }

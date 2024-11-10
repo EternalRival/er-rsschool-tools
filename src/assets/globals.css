@@ -8,18 +8,18 @@ body {
   }
 }
 
-:is(body, .scrollbar) {
+:where(body, .scrollbar) {
   @apply overflow-auto;
 }
 
-:is(body, .scrollbar)::-webkit-scrollbar {
+:where(body, .scrollbar)::-webkit-scrollbar {
   @apply h-2 w-2;
 }
 
-:is(body, .scrollbar)::-webkit-scrollbar-track {
+:where(body, .scrollbar)::-webkit-scrollbar-track {
   @apply cursor-default bg-blue-chill-100;
 }
 
-:is(body, .scrollbar)::-webkit-scrollbar-thumb {
+:where(body, .scrollbar)::-webkit-scrollbar-thumb {
   @apply cursor-default rounded-2xl bg-blue-chill-500/60;
 }

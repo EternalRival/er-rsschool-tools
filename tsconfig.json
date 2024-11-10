@@ -24,7 +24,7 @@
     "allowImportingTsExtensions": false,
 
     /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "ES2022"],
+    "lib": ["dom", "dom.iterable", "ES2022", "ES2023.Array" ],
     "noEmit": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",

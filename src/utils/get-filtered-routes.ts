@@ -5,6 +5,7 @@ const routes = new Map([
   [RouteName.HOME, Route.HOME],
   [RouteName.X_CHECK_CALC, Route.X_CHECK_CALC],
   [RouteName.DEPLOY_FINDER, Route.DEPLOY_FINDER],
+  [RouteName.GRATITUDE_SUMMARY, Route.GRATITUDE_SUMMARY],
   [RouteName.URL_DUPLICATES, Route.URL_DUPLICATES],
 ]);
 

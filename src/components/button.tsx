@@ -25,7 +25,7 @@ export const Button = ({ className, mode = 'primary', size = 's', ...props }: Bu
       }[size],
       {
         primary: 'bg-blue-chill-600 text-blue-chill-50 hover:bg-blue-chill-500 active:bg-blue-chill-600',
-        outlined: 'border border-blue-chill-500 text-blue-chill-500 hover:bg-blue-chill-100 active:bg-blue-chill-200',
+        outlined: 'border border-blue-chill-500 text-blue-chill-700 hover:bg-blue-chill-100 active:bg-blue-chill-200',
       }[mode],
       className
     )}

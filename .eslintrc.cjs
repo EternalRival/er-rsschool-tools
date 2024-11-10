@@ -38,7 +38,12 @@ const config = {
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/consistent-type-assertions': ['error', { assertionStyle: 'never' }],
     '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
+    '@typescript-eslint/explicit-member-accessibility': [
+      'error',
+      { accessibility: 'explicit', overrides: { constructors: 'off' } },
+    ],
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+    '@typescript-eslint/member-ordering': 'error',
     'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': [
       'error',
